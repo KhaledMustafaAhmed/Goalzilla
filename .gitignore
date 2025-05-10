@@ -46,3 +46,7 @@ Carthage/Build/
 
 # User schemes (optional)
 *.xcscheme
+
+# Ignore shared scheme management
+*.xcodeproj/xcshareddata/xcschememanagement.plist
+*.xcworkspace/xcshareddata/xcschememanagement.plist
