@@ -7,6 +7,8 @@
 
 import UIKit
 import Kingfisher
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
     override func viewDidLoad() {
