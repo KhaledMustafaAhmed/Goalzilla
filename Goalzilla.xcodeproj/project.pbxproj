@@ -6,7 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6558CB1FDC7B944D1DDDAE8C /* Pods_Goalzilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1232A2FDECD31881F941FF0A /* Pods_Goalzilla.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		1232A2FDECD31881F941FF0A /* Pods_Goalzilla.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goalzilla.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29E5FF954E3C9D35A36B01A5 /* Pods-Goalzilla.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goalzilla.release.xcconfig"; path = "Target Support Files/Pods-Goalzilla/Pods-Goalzilla.release.xcconfig"; sourceTree = "<group>"; };
+		505DC11B27AC0D0178336B66 /* Pods-Goalzilla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goalzilla.debug.xcconfig"; path = "Target Support Files/Pods-Goalzilla/Pods-Goalzilla.debug.xcconfig"; sourceTree = "<group>"; };
 		7248B1942DCD038C008F1BFD /* Goalzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goalzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -36,17 +43,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6558CB1FDC7B944D1DDDAE8C /* Pods_Goalzilla.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C68A71EA4A9883A70F2D856 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				505DC11B27AC0D0178336B66 /* Pods-Goalzilla.debug.xcconfig */,
+				29E5FF954E3C9D35A36B01A5 /* Pods-Goalzilla.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7248B18B2DCD038C008F1BFD = {
 			isa = PBXGroup;
 			children = (
 				7248B1962DCD038C008F1BFD /* Goalzilla */,
 				7248B1952DCD038C008F1BFD /* Products */,
+				5C68A71EA4A9883A70F2D856 /* Pods */,
+				F2A510138D687D94DE267E38 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +78,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		F2A510138D687D94DE267E38 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1232A2FDECD31881F941FF0A /* Pods_Goalzilla.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -65,9 +93,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7248B1AA2DCD038F008F1BFD /* Build configuration list for PBXNativeTarget "Goalzilla" */;
 			buildPhases = (
+				EC01163805585358F5552D22 /* [CP] Check Pods Manifest.lock */,
 				7248B1902DCD038C008F1BFD /* Sources */,
 				7248B1912DCD038C008F1BFD /* Frameworks */,
 				7248B1922DCD038C008F1BFD /* Resources */,
+				504C5EE5EB6EFBDD6C05AA55 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -77,8 +107,6 @@
 				7248B1962DCD038C008F1BFD /* Goalzilla */,
 			);
 			name = Goalzilla;
-			packageProductDependencies = (
-			);
 			productName = Goalzilla;
 			productReference = 7248B1942DCD038C008F1BFD /* Goalzilla.app */;
 			productType = "com.apple.product-type.application";
@@ -127,6 +155,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		504C5EE5EB6EFBDD6C05AA55 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Goalzilla/Pods-Goalzilla-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Goalzilla/Pods-Goalzilla-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Goalzilla/Pods-Goalzilla-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC01163805585358F5552D22 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Goalzilla-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7248B1902DCD038C008F1BFD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -140,6 +210,7 @@
 /* Begin XCBuildConfiguration section */
 		7248B1AB2DCD038F008F1BFD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 505DC11B27AC0D0178336B66 /* Pods-Goalzilla.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -167,6 +238,7 @@
 		};
 		7248B1AC2DCD038F008F1BFD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29E5FF954E3C9D35A36B01A5 /* Pods-Goalzilla.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
