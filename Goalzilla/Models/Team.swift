@@ -6,8 +6,16 @@
 //
 
 struct Team : Codable{
-    var teamKey:String?
+    var teamKey:Int?
     var teamName: String?
     var teamLogo: String?
     var players: [Player]
+    
+    enum CodingKeys: String, CodingKey {
+           case teamKey = "team_key"
+           case teamName = "team_name"
+           case teamLogo = "team_logo"
+           case players = "players"
+    }
+    
 }

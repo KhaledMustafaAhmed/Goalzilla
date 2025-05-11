@@ -5,7 +5,7 @@
 //  Created by Abdelrahman Elshreif on 11/5/25.
 //
 
-struct LeaguesResponse{
+struct LeaguesResponse : Codable{
     var success:Int
     var result:[League]
 }
