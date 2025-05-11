@@ -32,9 +32,10 @@ func fetchEvents(forLeagueId leagueId: Int) {
             let decoder = JSONDecoder()
             let response = try decoder.decode(EventsResponse.self, from: data)
             print("Events loaded: \(response.result.count)")
-            for event in response.result {
-                print("🔹 \(event.homeTeam ?? "Home") vs \(event.secondTeam ?? "Away") — \(event.eventDate ?? "") at \(event.eventTime ?? "")")
-            }
+            print("\(response.result)\n")
+//            for event in response.result {
+//                print("🔹 \(event.homeTeam ?? "Home") vs \(event.secondTeam ?? "Away") — \(event.eventDate ?? "") at \(event.eventTime ?? "")")
+//            }
         } catch {
             print("Decoding error:", error)
             print(String(data: data, encoding: .utf8) ?? "Could not print raw response.")
@@ -69,10 +70,8 @@ func fetchLeagues(forCountryId countryId: Int) {
             let decoder = JSONDecoder()
             let response = try decoder.decode(LeaguesResponse.self, from: data)
             print("Leagues loaded: \(response.result.count)")
-            for league in response.result {
-                print("🔹 \(league.leagueName ?? "Unknown") — \(league.leagueCountry ?? "")")
-                print("   Logo: \(league.leagueLogo ?? "-")")
-            }
+            print("\(response.result)\n")
+            
         } catch {
             print("Decoding error:", error)
             print(String(data: data, encoding: .utf8) ?? " Could not print raw response.")

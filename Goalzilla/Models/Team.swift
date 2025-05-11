@@ -6,6 +6,14 @@
 //
 
 struct Team : Codable{
+    
+    init(teamKey: Int? = nil, teamName: String? = nil, teamLogo: String? = nil, players: [Player]) {
+        self.teamKey = teamKey
+        self.teamName = teamName
+        self.teamLogo = teamLogo
+        self.players = players
+    }
+  
     var teamKey:Int?
     var teamName: String?
     var teamLogo: String?
