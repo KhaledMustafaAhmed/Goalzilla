@@ -14,6 +14,16 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let x = Repository()
+
+        x.getLeagues(sport: "football") { (result) in
+            switch result{
+            case .success(let Leagues):
+                print(Leagues?.result?[0].leagueName ?? "No data found")
+            case .failure(_):
+                print("Error in view controller")
+            }
+        }
     }
 }
 

@@ -2,6 +2,13 @@
 //  RemoteDataSource.swift
 //  Goalzilla
 //
-//  Created by Abdelrahman Elshreif on 10/5/25.
+//  Created by Khaled Mustafa on 11/05/2025.
 //
 
+class RemoteDataSource{
+    let networkService: NetworkServiceProtocol = AlamofireService()
+    
+    func getLeagues(sport: String, completion: @escaping (Result<LeagueResponse?, Error>) -> Void){
+        networkService.getLeagues(sport: sport, completion: completion)
+    }
+}
