@@ -5,3 +5,34 @@
 //  Created by Abdelrahman Elshreif on 10/5/25.
 //
 
+struct Event:Codable{
+    var eventKey:Int?
+    var eventDate:String?
+    var eventTime:String?
+    var homeTeam:String?
+    var secondTeam:String?
+    var homeTeamKey:Int?
+    var secondTeamKey:Int?
+    var eventFinalResult:String?
+    var homeTeamLogo:String?
+    var secondTeamLogo:String?
+    var leagueLogo:String?
+    var leagueCountryLogo:String?
+    
+    enum CodingKeys: String, CodingKey {
+           case eventKey = "event_key"
+           case eventDate = "event_date"
+           case eventTime = "event_time"
+           case homeTeam = "event_home_team"
+           case secondTeam = "event_away_team"
+           case homeTeamKey = "home_team_key"
+           case secondTeamKey = "away_team_key"
+           case eventFinalResult = "event_final_result"
+           case homeTeamLogo = "home_team_logo"
+           case secondTeamLogo = "away_team_logo"
+           case leagueLogo = "league_logo"
+           case leagueCountryLogo = "country_logo"
+       }
+}
+
+
