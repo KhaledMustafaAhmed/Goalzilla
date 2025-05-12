@@ -13,6 +13,8 @@ import SwiftyJSON
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchEvents(forLeagueId: 124)
+        fetchLeagues(forCountryId: 54)
         
         let x = Repository()
 
