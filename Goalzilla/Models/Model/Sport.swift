@@ -6,5 +6,5 @@
 //
 
 struct Sport{
-    
+    var sportName:String?
 }
