@@ -6,17 +6,20 @@
 //
 
 protocol LocalDataSourceProtocol{
-    func addTeamInFavourite(team: Team) -> Void
-    func removeTeamFromFavourite(team: Team) -> Void
+    func addLeagueInFavourite(team: League) -> Void
+    func removeLeagueFromFavourite(league: League) -> Void
 }
 
 class LocalDataSource: LocalDataSourceProtocol {
-    func addTeamInFavourite(team: Team) {
+    func addLeagueInFavourite(team: League) {
         
     }
-        func removeTeamFromFavourite(team: Team) {
-        }
     
+    func removeLeagueFromFavourite(league: League) {
+        
+    }
+    
+  
 }
 
         
