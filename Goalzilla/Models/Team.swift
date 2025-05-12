@@ -6,7 +6,6 @@
 //
 
 struct Team : Codable{
-    
     init(teamKey: Int? = nil, teamName: String? = nil, teamLogo: String? = nil, players: [Player]) {
         self.teamKey = teamKey
         self.teamName = teamName
@@ -25,5 +24,4 @@ struct Team : Codable{
            case teamLogo = "team_logo"
            case players = "players"
     }
-    
 }

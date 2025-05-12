@@ -11,19 +11,18 @@ import Alamofire
 import SwiftyJSON
 
 class ViewController: UIViewController {
+    
+    let provider: Provider = ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource() )
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchEvents(forLeagueId: 124)
-        fetchLeagues(forCountryId: 54)
-        
-        let x = Repository()
-
-        x.getLeagues(sport: "football") { (result) in
+        //basketball, football, tennis, cricket
+        provider.getTeams(with: "basketball", leagueId: 1098) { result in
             switch result{
-            case .success(let Leagues):
-                print(Leagues?.result?[0].leagueName ?? "No data found")
-            case .failure(_):
-                print("Error in view controller")
+            case .success(let teams):
+                print(teams?.result[0].teamName ?? " no name")
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }

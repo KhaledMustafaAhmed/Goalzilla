@@ -7,38 +7,32 @@
 
 class ProviderConfirmation : Provider{
     
-    var remoteDataSource: any RemoteDataSource
-    var localDataSource: any LocalDataSource
+    var remoteDataSource: any RemoteDataSourceProtocol
+    var localDataSource: any LocalDataSourceProtocol
     
-    init(remoteDataSource: any RemoteDataSource, localDataSource: any LocalDataSource) {
+    init(remoteDataSource: any RemoteDataSourceProtocol, localDataSource: any LocalDataSourceProtocol) {
         self.remoteDataSource = remoteDataSource
         self.localDataSource = localDataSource
     }
     
-    
-    func getEvents(league: League, time: String) -> [Event] {
-        return [];
+    func getLeagues(with sport: String, completion: @escaping (Result<LeaguesResponse?, any Error>) -> Void) {
+        remoteDataSource.getLeagues(with: sport, completion: completion)
     }
     
-    func getLeagues(sport: Sport) -> [League] {
-        return [];
+    func getTeams(with sport: String, leagueId: Int, completion: @escaping (Result<TeamsResponse?, any Error>) -> Void) {
+        remoteDataSource.getTeams(with: sport, leagueId: leagueId, completion: completion)
     }
     
-    func getTeams(league: League) -> [Team] {
-        return [];
-    }
-    
-    func getTeamMembers(teamId: Int) -> Team {
-        return Team(teamKey: nil, teamName: nil, teamLogo: nil, players: [])
+    func getEvents(with sport: String, leagueId: Int, completion: @escaping (Result<EventsResponse?, any Error>) -> Void) {
+        remoteDataSource.getEvents(with: sport, leagueId: leagueId, completion: completion)
     }
     
     func addTeamInFavourite(team: Team) {
-        return
+        
     }
     
     func removeTeamFromFavourite(team: Team) {
-        return
+        
     }
-    
-    
+
 }

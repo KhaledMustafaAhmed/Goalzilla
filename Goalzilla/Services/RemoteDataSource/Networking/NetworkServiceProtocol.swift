@@ -5,13 +5,10 @@
 //  Created by Khaled Mustafa on 11/05/2025.
 //
 
-
-struct EventResponse: Codable{}
-
 import Foundation
 
 protocol NetworkServiceProtocol: LeaguesNetworkingProtocol, TeamsNetworkingProtocol, EventsNetworkingProtocol {
-    func request<T: Decodable>(
+    func request<T: Codable>(
         sport: String,
         parameters: [String: Any],
         completion: @escaping (Result<T, Error>) -> Void
@@ -19,20 +16,19 @@ protocol NetworkServiceProtocol: LeaguesNetworkingProtocol, TeamsNetworkingProto
 }
 
 protocol LeaguesNetworkingProtocol {
-    func getLeagues(sport: String, completion: @escaping (Result<LeagueResponse?, Error>) -> Void)
+    func getLeagues(sport: String, completion: @escaping (Result<LeaguesResponse?, Error>) -> Void)
 }
 
 protocol TeamsNetworkingProtocol {
-    func getTeams(sport: String, leagueId: Int, completion: @escaping (Result<TeamResponse?, Error>) -> Void)
-    func getTeamDetails(sport: String, teamId: Int, completion: @escaping (Result<TeamDetailsResponse?, Error>) -> Void)
+    func getTeams(sport: String, leagueId: Int, completion: @escaping (Result<TeamsResponse?, Error>) -> Void)
 }
 
 protocol EventsNetworkingProtocol {
-    func getEvents(sport: String, leagueId: Int, completion: @escaping (Result<EventResponse?, Error>) -> Void)
+    func getEvents(sport: String, leagueId: Int, completion: @escaping (Result<EventsResponse?, Error>) -> Void)
 }
 
 extension NetworkServiceProtocol {
-    func getLeagues(sport: String, completion: @escaping (Result<LeagueResponse?, Error>) -> Void) {
+    func getLeagues(sport: String, completion: @escaping (Result<LeaguesResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
             "met": "Leagues",
             "APIkey": Constants.apiKey
@@ -40,7 +36,7 @@ extension NetworkServiceProtocol {
         request(sport: sport, parameters: parameters, completion: completion)
     }
     
-    func getTeams(sport: String, leagueId: Int, completion: @escaping (Result<TeamResponse?, Error>) -> Void) {
+    func getTeams(sport: String, leagueId: Int, completion: @escaping (Result<TeamsResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
             "met": "Teams",
             "APIkey": Constants.apiKey,
@@ -49,16 +45,7 @@ extension NetworkServiceProtocol {
         request(sport: sport, parameters: parameters, completion: completion)
     }
     
-    func getTeamDetails(sport: String, teamId: Int, completion: @escaping (Result<TeamDetailsResponse?, Error>) -> Void) {
-        let parameters: [String: Any] = [
-            "met": "Teams",
-            "APIkey": Constants.apiKey,
-            "teamId": teamId
-        ]
-        request(sport: sport, parameters: parameters, completion: completion)
-    }
-    
-    func getEvents(sport: String, leagueId: Int, completion: @escaping (Result<EventResponse?, Error>) -> Void) {
+    func getEvents(sport: String, leagueId: Int, completion: @escaping (Result<EventsResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
             "met": "Events",
             "APIkey": Constants.apiKey,

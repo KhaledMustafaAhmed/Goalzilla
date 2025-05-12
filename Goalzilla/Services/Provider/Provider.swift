@@ -7,15 +7,18 @@
 
 protocol Provider{
     
-    var remoteDataSource: RemoteDataSource {get}
-    var localDataSource: LocalDataSource {get}
+    var remoteDataSource: RemoteDataSourceProtocol {get}
     
-    func getEvents(league:League , time:String) -> [Event]
-    func getLeagues(sport: Sport) -> [League]
-    func getTeams(league: League) -> [Team]
-    func getTeamMembers(teamId: Int) -> Team
+    var localDataSource: LocalDataSourceProtocol {get}
+    
+    func getLeagues(with sport: String, completion: @escaping (Result<LeaguesResponse?, Error>) -> Void)
+    
+    func getTeams(with sport: String, leagueId: Int, completion: @escaping (Result<TeamsResponse?, Error>) -> Void)
+    
+    func getEvents(with sport: String, leagueId: Int, completion: @escaping (Result<EventsResponse?, Error>) -> Void)
+    
+    // local
     func addTeamInFavourite(team: Team) -> Void
     func removeTeamFromFavourite(team: Team) -> Void
-    
 }
 

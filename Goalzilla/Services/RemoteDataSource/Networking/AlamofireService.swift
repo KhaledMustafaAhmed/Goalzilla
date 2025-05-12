@@ -7,10 +7,6 @@
 
 import Alamofire
 
-struct TeamResponse: Codable{}
-
-struct TeamDetailsResponse: Codable{}
-
 /// Concrete implementation of NetworkService using Alamofire
 ///
 /// ## Responsibilities:
