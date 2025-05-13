@@ -1,9 +1,15 @@
 //
-//  Leagues.swift
+//  LeaguesResponse.swift
 //  Goalzilla
 //
 //  Created by Abdelrahman Elshreif on 11/5/25.
 //
+
+// It was Applicable for all Sports
+struct LeaguesResponse : Codable{
+    var success:Int?
+    var result:[League]?
+}
 
 struct League:Codable{
     var leagueKey:Int?

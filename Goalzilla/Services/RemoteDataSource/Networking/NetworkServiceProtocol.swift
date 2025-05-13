@@ -20,14 +20,22 @@ protocol LeaguesNetworkingProtocol {
 }
 
 protocol TeamsNetworkingProtocol {
-    func getTeams(sport: String, leagueId: Int, completion: @escaping (Result<TeamsResponse?, Error>) -> Void)
+    func getFootballTeams(sport: String, leagueId: Int, completion: @escaping (Result<FootballTeamsResponse?, Error>) -> Void)
+    func getBasketballTeams(sport: String, leagueId: Int, completion: @escaping (Result<BasketballTeamsResponse?, Error>) -> Void)
+    func getCrackitTeams(sport: String, leagueId: Int, completion: @escaping (Result<CrackitTeamsResponse?, Error>) -> Void)
+    func getTennisPlayersRanking(sport: String, leagueId: Int, completion: @escaping (Result<TennisRankingResponse?, Error>) -> Void)
+
 }
 
 protocol EventsNetworkingProtocol {
-    func getEvents(sport: String, leagueId: Int, completion: @escaping (Result<EventsResponse?, Error>) -> Void)
+    func getFootballEvents(sport: String, leagueId: Int, completion: @escaping (Result<FootballEventsResponse?, Error>) -> Void)
+    func getBasketballEvents(sport: String, leagueId: Int, completion: @escaping (Result<BasketEventsResponse?, Error>) -> Void)
+    func getCrackitEvents(sport: String, leagueId: Int, completion: @escaping (Result<CricketEventsResponse?, Error>) -> Void)
+    func getTennisEvents(sport: String, leagueId: Int, completion: @escaping (Result<TennisEventsResponse?, Error>) -> Void)
 }
 
 extension NetworkServiceProtocol {
+    
     func getLeagues(sport: String, completion: @escaping (Result<LeaguesResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
             "met": "Leagues",
@@ -36,7 +44,7 @@ extension NetworkServiceProtocol {
         request(sport: sport, parameters: parameters, completion: completion)
     }
     
-    func getTeams(sport: String, leagueId: Int, completion: @escaping (Result<TeamsResponse?, Error>) -> Void) {
+    func getFootballTeams(sport: String, leagueId: Int, completion: @escaping (Result<FootballTeamsResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
             "met": "Teams",
             "APIkey": Constants.apiKey,
@@ -45,9 +53,72 @@ extension NetworkServiceProtocol {
         request(sport: sport, parameters: parameters, completion: completion)
     }
     
-    func getEvents(sport: String, leagueId: Int, completion: @escaping (Result<EventsResponse?, Error>) -> Void) {
+    
+    func getBasketballTeams(sport: String, leagueId: Int, completion: @escaping (Result<BasketballTeamsResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
-            "met": "Events",
+            "met": "Teams",
+            "APIkey": Constants.apiKey,
+            "leagueId": leagueId
+        ]
+        request(sport: sport, parameters: parameters, completion: completion)
+    }
+    
+    func getCrackitTeams(sport: String, leagueId: Int, completion: @escaping (Result<CrackitTeamsResponse?, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "met": "Teams",
+            "APIkey": Constants.apiKey,
+            "leagueId": leagueId
+        ]
+        request(sport: sport, parameters: parameters, completion: completion)
+    }
+    
+    func getFootballEvents(sport: String, leagueId: Int, completion: @escaping (Result<FootballEventsResponse?, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "met": "Fixtures",
+            "APIkey": Constants.apiKey,
+            "leagueId": leagueId,
+            "from" : Constants.from,
+            "to": Constants.to
+        ]
+        request(sport: sport, parameters: parameters, completion: completion)
+    }
+    
+    func getBasketballEvents(sport: String, leagueId: Int, completion: @escaping (Result<BasketEventsResponse?, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "met": "Fixtures",
+            "APIkey": Constants.apiKey,
+            "leagueId": leagueId,
+            "from" : Constants.from,
+            "to": Constants.to
+            
+        ]
+        request(sport: sport, parameters: parameters, completion: completion)
+    }
+    
+    func getCrackitEvents(sport: String, leagueId: Int, completion: @escaping (Result<CricketEventsResponse?, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "met": "Fixtures",
+            "APIkey": Constants.apiKey,
+            "leagueId": leagueId,
+            "from" : Constants.from,
+            "to": Constants.to
+        ]
+        request(sport: sport, parameters: parameters, completion: completion)
+    }
+    
+    func getTennisEvents(sport: String, leagueId: Int, completion: @escaping (Result<TennisEventsResponse?, Error>) -> Void) {
+        let parameters: [String: Any] = [
+            "met": "Fixtures",
+            "APIkey": Constants.apiKey,
+            "leagueId": leagueId,
+            
+        ]
+        request(sport: sport, parameters: parameters, completion: completion)
+    }
+    
+    func getTennisPlayersRanking(sport: String, leagueId: Int, completion: @escaping (Result<TennisRankingResponse?, Error>) -> Void){
+        let parameters: [String: Any] = [
+            "met": "Standings",
             "APIkey": Constants.apiKey,
             "leagueId": leagueId
         ]

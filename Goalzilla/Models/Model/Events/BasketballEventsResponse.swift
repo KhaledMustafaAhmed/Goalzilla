@@ -1,11 +1,18 @@
 //
-//  Event.swift
+//  BasketballEventsResponse.swift
 //  Goalzilla
 //
-//  Created by Abdelrahman Elshreif on 10/5/25.
+//  Created by Abdelrahman Elshreif on 12/5/25.
 //
 
-struct Event:Codable{
+import Foundation
+
+struct BasketEventsResponse : Codable{
+    var success:Int?
+    var result:[BasketballEvent]?
+}
+
+struct BasketballEvent:Codable{
     var eventKey:Int?
     var eventDate:String?
     var eventTime:String?
@@ -16,8 +23,6 @@ struct Event:Codable{
     var eventFinalResult:String?
     var homeTeamLogo:String?
     var secondTeamLogo:String?
-    var leagueLogo:String?
-    var leagueCountryLogo:String?
     
     enum CodingKeys: String, CodingKey {
            case eventKey = "event_key"
@@ -28,11 +33,8 @@ struct Event:Codable{
            case homeTeamKey = "home_team_key"
            case secondTeamKey = "away_team_key"
            case eventFinalResult = "event_final_result"
-           case homeTeamLogo = "home_team_logo"
-           case secondTeamLogo = "away_team_logo"
-           case leagueLogo = "league_logo"
-           case leagueCountryLogo = "country_logo"
+           case homeTeamLogo = "event_home_team_logo"
+           case secondTeamLogo = "event_away_team_logo"
        }
 }
-
 
