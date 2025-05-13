@@ -8,7 +8,6 @@
 protocol Provider{
     
     var remoteDataSource: RemoteDataSourceProtocol {get}
-    
     var localDataSource: LocalDataSourceProtocol {get}
     
     func getLeagues(with sport: String, completion: @escaping (Result<LeaguesResponse?, Error>) -> Void)
@@ -25,7 +24,7 @@ protocol Provider{
     func getTennisEvents(with sport: String, leagueId: Int, completion: @escaping (Result<TennisEventsResponse?, Error>) -> Void)
     
     
-    func getTennisPlayersRanking(with sport: String , league: String , leagueId:String , completion: @escaping (Result<TennisRankingResponse? , Error>) -> Void)
+    func getTennisPlayersRanking(with sport: String , leagueId:Int , completion: @escaping (Result<TennisRankingResponse? , Error>) -> Void)
     
     
     
