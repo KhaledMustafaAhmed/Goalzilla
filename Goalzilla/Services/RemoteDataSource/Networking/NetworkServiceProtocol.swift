@@ -74,36 +74,44 @@ extension NetworkServiceProtocol {
     
     func getFootballEvents(sport: String, leagueId: Int, completion: @escaping (Result<FootballEventsResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
-            "met": "Events",
+            "met": "Fixtures",
             "APIkey": Constants.apiKey,
-            "leagueId": leagueId
+            "leagueId": leagueId,
+            "from" : Constants.from,
+            "to": Constants.to
         ]
         request(sport: sport, parameters: parameters, completion: completion)
     }
     
     func getBasketballEvents(sport: String, leagueId: Int, completion: @escaping (Result<BasketEventsResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
-            "met": "Events",
+            "met": "Fixtures",
             "APIkey": Constants.apiKey,
-            "leagueId": leagueId
+            "leagueId": leagueId,
+            "from" : Constants.from,
+            "to": Constants.to
+            
         ]
         request(sport: sport, parameters: parameters, completion: completion)
     }
     
     func getCrackitEvents(sport: String, leagueId: Int, completion: @escaping (Result<CricketEventsResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
-            "met": "Events",
+            "met": "Fixtures",
             "APIkey": Constants.apiKey,
-            "leagueId": leagueId
+            "leagueId": leagueId,
+            "from" : Constants.from,
+            "to": Constants.to
         ]
         request(sport: sport, parameters: parameters, completion: completion)
     }
     
     func getTennisEvents(sport: String, leagueId: Int, completion: @escaping (Result<TennisEventsResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
-            "met": "Events",
+            "met": "Fixtures",
             "APIkey": Constants.apiKey,
-            "leagueId": leagueId
+            "leagueId": leagueId,
+            
         ]
         request(sport: sport, parameters: parameters, completion: completion)
     }

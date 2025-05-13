@@ -19,4 +19,6 @@
 struct Constants {
     static let apiKey = "f57e603cc5fc752af494be9504c227098f448a1d87a067fda7066a24b6328e9b"
     static let baseURL = "https://apiv2.allsportsapi.com"
+    static let from = "2024-05-18"
+    static let to = "2024-05-18"
 }
