@@ -1,15 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qDO-ms-9ar">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="hv1-Qo-YHe">
+            <objects>
+                <viewController storyboardIdentifier="SplashScreen" id="qDO-ms-9ar" customClass="SplashViewController" customModule="Goalzilla" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QWP-j3-qaX">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SLn-bD-oh9">
+                                <rect key="frame" x="0.0" y="183" width="393" height="393"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SLn-bD-oh9" secondAttribute="height" multiplier="1:1" id="m2S-1b-keV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="007-IH-btE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="SLn-bD-oh9" firstAttribute="width" secondItem="QWP-j3-qaX" secondAttribute="width" id="3OP-cd-bCj"/>
+                            <constraint firstItem="SLn-bD-oh9" firstAttribute="top" secondItem="007-IH-btE" secondAttribute="top" constant="65" id="WFF-Tt-RPR"/>
+                            <constraint firstItem="SLn-bD-oh9" firstAttribute="centerX" secondItem="007-IH-btE" secondAttribute="centerX" id="haX-zc-3lw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="lottieAnimationView" destination="SLn-bD-oh9" id="iBA-QN-OnR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XBA-tu-sLh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1082" y="-27"/>
+        </scene>
         <!--On Boarding View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -19,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5Bj-1D-uUa">
-                                <rect key="frame" x="0.0" y="59" width="393" height="643"/>
+                                <rect key="frame" x="0.0" y="118" width="393" height="550"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="ozq-21-iB7">
                                     <size key="itemSize" width="390" height="638"/>
@@ -29,7 +61,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OnBoardingCollectionViewCell" id="ZoK-BQ-uBd" customClass="OnBoardingCollectionViewCell" customModule="Goalzilla" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="2.6666666666666665" width="390" height="638"/>
+                                        <rect key="frame" x="0.0" y="-44" width="390" height="638"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="EK0-yN-4OM">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="638"/>
@@ -80,12 +112,12 @@
                                 </connections>
                             </collectionView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="mQU-z9-VfU">
-                                <rect key="frame" x="160" y="710" width="73" height="26"/>
+                                <rect key="frame" x="160" y="676" width="73" height="26"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VK-5j-EjN">
-                                <rect key="frame" x="121.66666666666669" y="752" width="150" height="50"/>
+                                <rect key="frame" x="121.66666666666669" y="718" width="150" height="50"/>
                                 <color key="backgroundColor" systemColor="darkTextColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Next"/>
@@ -126,20 +158,20 @@
             </objects>
             <point key="canvasLocation" x="-172" y="-30"/>
         </scene>
-        <!--Dummy View Controller-->
-        <scene sceneID="PIa-qv-J75">
+        <!--Home View Controller-->
+        <scene sceneID="68Z-vL-EJD">
             <objects>
-                <viewController storyboardIdentifier="DummyVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G1M-vl-jL9" customClass="DummyViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="FdT-qa-b6g">
+                <viewController storyboardIdentifier="HomeScreen" id="FBj-Ps-Arr" customClass="HomeViewController" customModule="Goalzilla" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CWL-49-xnC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="zwx-hG-haG"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <viewLayoutGuide key="safeArea" id="YS5-6O-KFU"/>
+                        <color key="backgroundColor" systemColor="systemPurpleColor"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="40w-z7-TWA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uTL-F7-iYS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="631" y="-25"/>
+            <point key="canvasLocation" x="633" y="10"/>
         </scene>
     </scenes>
     <resources>
@@ -149,8 +181,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

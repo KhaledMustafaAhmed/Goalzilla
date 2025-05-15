@@ -28,11 +28,11 @@ class OnBoardingViewController: UIViewController  , OnBoardingViewDelegete{
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.attachView(view: self)
         presenter.getSlidesData()
+        self.navigationItem.setHidesBackButton(true, animated: true)
     }
   
     func renderOnBoardingSlidesData(data: [OnBoardingSlide]) {
