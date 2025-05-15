@@ -12,7 +12,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: scene)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var controller:UIViewController!
+        
+        if UserDefaults.standard.hasOnBoarded {
+            controller = storyboard.instantiateViewController(withIdentifier: "DummyVC")
+        }else{
+            controller = storyboard.instantiateViewController(withIdentifier: "OnBoarding")
+        }
+        
+        window?.rootViewController = controller
+        window?.makeKeyAndVisible()	
+        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
