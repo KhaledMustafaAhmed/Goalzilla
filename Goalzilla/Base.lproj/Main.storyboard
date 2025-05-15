@@ -173,6 +173,34 @@
             </objects>
             <point key="canvasLocation" x="633" y="10"/>
         </scene>
+        <!--Sport Leagues Table View Controller-->
+        <scene sceneID="wzm-qJ-8Ix">
+            <objects>
+                <tableViewController storyboardIdentifier="SportLeagues" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Pwr-C5-gVh" customClass="SportLeaguesTableViewController" customModule="Goalzilla" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="O4b-jG-2dG">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SportLeagueCell" id="oO8-99-VYf">
+                                <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oO8-99-VYf" id="bMT-ha-KnR">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Pwr-C5-gVh" id="LNi-a2-GKN"/>
+                            <outlet property="delegate" destination="Pwr-C5-gVh" id="AWh-vp-McX"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pe5-kW-nwB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1382" y="-25"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="darkTextColor">
