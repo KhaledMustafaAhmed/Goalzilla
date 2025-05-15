@@ -44,6 +44,7 @@ class OnBoardingViewController: UIViewController  , OnBoardingViewDelegete{
     @IBAction func nextOnBoardingPageClicked(_ sender: Any) {
         if currentPage == slides.count-1 {
             presenter.userHasOnBoarded()
+            navigateToMainScreen()
             return
         }else{
             currentPage += 1
@@ -54,6 +55,13 @@ class OnBoardingViewController: UIViewController  , OnBoardingViewDelegete{
     
 }
 
+// MARK: Navigation Function
+extension OnBoardingViewController{
+    func navigateToMainScreen(){
+        let homeScreenVC = storyboard?.instantiateViewController(identifier: "HomeScreen") as! HomeViewController
+        self.navigationController?.pushViewController(homeScreenVC, animated: true)
+    }
+}
 
 extension OnBoardingViewController: UICollectionViewDelegate , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
