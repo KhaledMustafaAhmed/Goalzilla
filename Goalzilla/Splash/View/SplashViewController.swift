@@ -68,7 +68,8 @@ extension SplashViewController{
     }
     
     private func navigateToMainScreen(){
-        let homeScreen = storyboard?.instantiateViewController(withIdentifier: "HomeScreen") as! HomeViewController
+//        let homeScreen = storyboard?.instantiateViewController(withIdentifier: "HomeScreen") as! HomeViewController
+        let homeScreen = storyboard?.instantiateViewController(withIdentifier: "sportLeagues") as! SportLeaguesTableViewController
         
         self.navigationController?.pushViewController(homeScreen, animated: true)
     }

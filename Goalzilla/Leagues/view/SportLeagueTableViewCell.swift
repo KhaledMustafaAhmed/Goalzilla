@@ -9,6 +9,14 @@ import UIKit
 
 class SportLeagueTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var leagueLabel: UILabel!
+    @IBOutlet weak var leagueImage: UIImageView!
+
+    static var resuseIdentifier:String = "customLeagueCell"
+    
+    static var nib:UINib?{
+        return UINib.init(nibName: "SportLeagueTableViewCell", bundle: Bundle.init(for: SportLeagueTableViewCell.self))
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
