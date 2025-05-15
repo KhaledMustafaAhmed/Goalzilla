@@ -7,16 +7,16 @@
 
 import UIKit
 
-class OnBoardingViewController: UIViewController {
-    
-    
+class OnBoardingViewController: UIViewController  , OnBoardingViewDelegete{
+  
     @IBOutlet weak var onBoardingPageControl: UIPageControl!
     @IBOutlet weak var onBoardingCollectionView: UICollectionView!
     @IBOutlet weak var nextOnBoardingPageBtn: UIButton!
     
-    
     var slides:[OnBoardingSlide] = []
+    let presenter = OnBoardingPresenter()
     static let identifier:String = "OnBoardingCollectionViewCell"
+    
     var currentPage = 0 {
         didSet{
             onBoardingPageControl.currentPage = currentPage	
@@ -31,29 +31,25 @@ class OnBoardingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        slides = [
-            OnBoardingSlide(title: "First Page", description: "First Page Desc", image: UIImage(named: "on_boarding_1")!),
-            OnBoardingSlide(title: "Second Page", description: "Second Page Desc", image: UIImage(named: "on_boarding_2")!),
-            OnBoardingSlide(title: "Third Page", description: "Third Page Desc", image: UIImage(named: "on_boarding_3")!)
-        ]
-
+        presenter.attachView(view: self)
+        presenter.getSlidesData()
+    }
+  
+    func renderOnBoardingSlidesData(data: [OnBoardingSlide]) {
+        slides = data
+        onBoardingCollectionView.reloadData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-   
-    }
+  
     @IBAction func nextOnBoardingPageClicked(_ sender: Any) {
-        
         if currentPage == slides.count-1 {
+            presenter.userHasOnBoarded()
             return
         }else{
-            
             currentPage += 1
             let indexPath = IndexPath(item: currentPage, section: 0)
             onBoardingCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
-       
     }
     
 }

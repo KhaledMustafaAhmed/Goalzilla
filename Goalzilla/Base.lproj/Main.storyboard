@@ -13,7 +13,7 @@
         <!--On Boarding View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="OnBoardingViewController" customModule="Goalzilla" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnBoarding" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="OnBoardingViewController" customModule="Goalzilla" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +124,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="-172" y="-30"/>
+        </scene>
+        <!--Dummy View Controller-->
+        <scene sceneID="PIa-qv-J75">
+            <objects>
+                <viewController storyboardIdentifier="DummyVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="G1M-vl-jL9" customClass="DummyViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FdT-qa-b6g">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="zwx-hG-haG"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="40w-z7-TWA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="631" y="-25"/>
         </scene>
     </scenes>
     <resources>
@@ -133,6 +148,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
