@@ -16,17 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        var controller:UIViewController!
-        
-        if UserDefaults.standard.hasOnBoarded {
-            controller = storyboard.instantiateViewController(withIdentifier: "DummyVC")
-        }else{
-            controller = storyboard.instantiateViewController(withIdentifier: "OnBoarding")
-        }
-        
-        window?.rootViewController = controller
+        let splashVC = storyboard.instantiateViewController(withIdentifier: "SplashScreen") as! SplashViewController
+        let navController = UINavigationController(rootViewController: splashVC)
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()	
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
