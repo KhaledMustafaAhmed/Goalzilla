@@ -10,4 +10,6 @@ target 'Goalzilla' do
   pod 'Kingfisher', '~> 7.0'
   pod 'SwiftyJSON', '~> 4.0' 
   pod 'Alamofire'
+  pod 'lottie-ios'
+
 end
