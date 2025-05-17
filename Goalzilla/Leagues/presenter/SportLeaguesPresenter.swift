@@ -18,12 +18,16 @@ class SportLeaguesPresenter{
         self.view = view
     }
     
-    func getLeaguesData(sport:Sport){
-//        switch sport {
-//        case :
-//            <#code#>
-//        default:
-//            <#code#>
-//        }
+    func getLeaguesData(sport:String){
+        provider.getLeagues(with: sport) { result in
+            switch result{
+            case .success(let leaguesResponse):
+                if let leagues = leaguesResponse?.result {
+                    self.view.renderLeaguesData(leaguesList: leagues)
+                }
+            case .failure(_):
+                self.view.failToGetLeaguesData()
+            }
+        }
     }
 }

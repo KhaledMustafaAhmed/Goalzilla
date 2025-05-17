@@ -6,5 +6,6 @@
 //
 
 protocol SportLeaguesDelegete{
-    
+    func failToGetLeaguesData()
+    func renderLeaguesData(leaguesList: [League])
 }

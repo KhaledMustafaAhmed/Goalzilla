@@ -67,6 +67,7 @@ extension SplashViewController{
         self.navigationController?.pushViewController(onboardingScreen, animated: true)
     }
     
+
     private func navigateToMainScreen() {
         let homeScreen = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
 
@@ -75,6 +76,4 @@ extension SplashViewController{
             sceneDelegate.window?.makeKeyAndVisible()
         }
     }
-
-
 }
