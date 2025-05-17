@@ -67,9 +67,13 @@ extension SplashViewController{
         self.navigationController?.pushViewController(onboardingScreen, animated: true)
     }
     
-    private func navigateToMainScreen(){
-        let homeScreen = storyboard?.instantiateViewController(withIdentifier: "HomeScreen") as! HomeViewController
-        
-        self.navigationController?.pushViewController(homeScreen, animated: true)
+
+    private func navigateToMainScreen() {
+        let mainNavController = storyboard?.instantiateViewController(withIdentifier: "mainNavController") as! UINavigationController
+
+        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+            sceneDelegate.window?.rootViewController = mainNavController
+            sceneDelegate.window?.makeKeyAndVisible()
+        }
     }
 }

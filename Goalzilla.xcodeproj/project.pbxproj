@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7233A7782DD00AA00067A787 /* Pods_Goalzilla.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B961B894D9284981635A900C /* Pods_Goalzilla.framework */; };
+		7254893B2DD7EFD400680321 /* ShimmerView in Frameworks */ = {isa = PBXBuildFile; productRef = 7254893A2DD7EFD400680321 /* ShimmerView */; };
+		727684AB2DD7CB3E0007F8F9 /* ShimmerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 727684AA2DD7CB3E0007F8F9 /* ShimmerSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				727684AB2DD7CB3E0007F8F9 /* ShimmerSwift in Frameworks */,
+				7254893B2DD7EFD400680321 /* ShimmerView in Frameworks */,
 				7233A7782DD00AA00067A787 /* Pods_Goalzilla.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,6 +138,10 @@
 			);
 			mainGroup = 7248B18B2DCD038C008F1BFD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				727684A92DD7CB3E0007F8F9 /* XCRemoteSwiftPackageReference "ShimmerSwift" */,
+				725489392DD7EFD400680321 /* XCRemoteSwiftPackageReference "ShimmerView" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7248B1952DCD038C008F1BFD /* Products */;
 			projectDirPath = "";
@@ -185,13 +193,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Goalzilla/Pods-Goalzilla-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Goalzilla/Pods-Goalzilla-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -410,6 +414,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		725489392DD7EFD400680321 /* XCRemoteSwiftPackageReference "ShimmerView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mercari/ShimmerView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.1;
+			};
+		};
+		727684A92DD7CB3E0007F8F9 /* XCRemoteSwiftPackageReference "ShimmerSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BeauNouvelle/ShimmerSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7254893A2DD7EFD400680321 /* ShimmerView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 725489392DD7EFD400680321 /* XCRemoteSwiftPackageReference "ShimmerView" */;
+			productName = ShimmerView;
+		};
+		727684AA2DD7CB3E0007F8F9 /* ShimmerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 727684A92DD7CB3E0007F8F9 /* XCRemoteSwiftPackageReference "ShimmerSwift" */;
+			productName = ShimmerSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7248B18C2DCD038C008F1BFD /* Project object */;
 }

@@ -24,7 +24,7 @@ struct League:Codable{
           case leagueKey = "league_key"
           case leagueName = "league_name"
           case leagueLogo = "league_logo"
-          case countryLogo = "country_logo"
+          case countryLogo = "country_logo"	
           case leagueCountry = "country_name"
           case leagueCountryKey = "country_key"
       }
