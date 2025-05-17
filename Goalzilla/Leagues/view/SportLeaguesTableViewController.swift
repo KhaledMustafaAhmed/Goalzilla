@@ -17,22 +17,19 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
     
     var presenter:SportLeaguesPresenter = SportLeaguesPresenter(provider: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource()))
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(SportLeagueTableViewCell.nib, forCellReuseIdentifier: SportLeagueTableViewCell.resuseIdentifier)
         self.presenter.attachView(view: self)
         self.presenter.getLeaguesData(sport: sport)
-        
+        self.tableView.isSkeletonable = true
+        self.tableView.showSkeleton(usingColor: .concrete, transition: .crossDissolve(0.25))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.tableView.isSkeletonable = true
-        self.tableView.showSkeleton(usingColor: .concrete, transition: .crossDissolve(0.25))
-        
-        
     }
+    
     func failToGetLeaguesData() {
         print("Fialed to Get Data")
         tableView.hideSkeleton()
@@ -44,7 +41,6 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
         self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
         self.tableView.reloadData()
     }
-    
 
 
     // MARK: - Table view data source
@@ -59,15 +55,12 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: SportLeagueTableViewCell.resuseIdentifier, for: indexPath) as! SportLeagueTableViewCell
         if leaguesList.isEmpty {
-//                cell.showAnimatedGradientSkeleton()
+            //cell.showAnimatedGradientSkeleton()
             let gradient = SkeletonGradient(baseColor: .concrete)
             let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
-            tableView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation, transition: .crossDissolve(0.25))
-
-//                cell.startShimmer()
+            cell.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation, transition: .crossDissolve(0.25))
             } else {
                 let currentLeague = leaguesList[indexPath.row]
                 let placeholder = Utils.sportPlaceholderImage(for: sport)
@@ -77,13 +70,11 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
                     cell.leagueImage.image = placeholder
                 }
                 cell.leagueLabel.text = currentLeague.leagueName
-//                cell.hideSkeleton()
+                cell.hideSkeleton()
 //                cell.stopShimmer()
             }
             return cell
-        
     }
-
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120;
@@ -91,7 +82,6 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
 }
 
 extension SportLeaguesTableViewController: SkeletonTableViewDataSource {
-
     func collectionSkeletonView(_ skeletonView: UITableView,
                                 numberOfRowsInSection section: Int) -> Int {
         return leaguesList.isEmpty ? 10 : leaguesList.count

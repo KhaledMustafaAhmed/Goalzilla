@@ -58,8 +58,12 @@ class OnBoardingViewController: UIViewController  , OnBoardingViewDelegete{
 // MARK: Navigation Function
 extension OnBoardingViewController{
     func navigateToMainScreen(){
-        let homeScreenVC = storyboard?.instantiateViewController(identifier: "HomeScreen") as! HomeViewController
-        self.navigationController?.pushViewController(homeScreenVC, animated: true)
+        let mainNavController = storyboard?.instantiateViewController(withIdentifier: "mainNavController") as! UINavigationController
+
+        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+            sceneDelegate.window?.rootViewController = mainNavController
+            sceneDelegate.window?.makeKeyAndVisible()
+        }
     }
 }
 

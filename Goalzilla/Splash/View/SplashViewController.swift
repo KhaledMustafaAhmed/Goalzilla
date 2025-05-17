@@ -69,10 +69,10 @@ extension SplashViewController{
     
 
     private func navigateToMainScreen() {
-        let homeScreen = storyboard?.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
+        let mainNavController = storyboard?.instantiateViewController(withIdentifier: "mainNavController") as! UINavigationController
 
         if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-            sceneDelegate.window?.rootViewController = homeScreen
+            sceneDelegate.window?.rootViewController = mainNavController
             sceneDelegate.window?.makeKeyAndVisible()
         }
     }

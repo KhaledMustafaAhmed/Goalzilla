@@ -11,6 +11,11 @@ import UIKit
 extension HomeViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(sportItems[indexPath.row].sportName)
+        let sportsLeagueController = self.storyboard?.instantiateViewController(identifier: "sportLeagues") as! SportLeaguesTableViewController
+        
+        sportsLeagueController.sport = sportItems[indexPath.row].sportName
+        
+        self.navigationController?.pushViewController(sportsLeagueController, animated: true)
     }
 }
 

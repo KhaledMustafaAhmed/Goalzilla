@@ -15,9 +15,9 @@ class HomeViewController: UIViewController {
     // MARK: Properties
     var sportItems: [Sport] = [
         Football(sportName: "football", assetName: "pic-1"),
-        Tennisball(sportName: "Tennis", assetName: "pic-2"),
-        Basketball(sportName: "BasketBall", assetName: "pic-3"),
-        Cricketball(sportName: "Cricket", assetName: "pic-4"),
+        Tennisball(sportName: "tennis", assetName: "pic-2"),
+        Basketball(sportName: "basketball", assetName: "pic-3"),
+        Cricketball(sportName: "cricket", assetName: "pic-4"),
     ]
     
     let flowLayout = UICollectionViewFlowLayout()
