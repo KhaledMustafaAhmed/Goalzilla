@@ -6,26 +6,30 @@
 //
 
 import UIKit
+import SkeletonView
+import ShimmerView
 
 class SportLeagueTableViewCell: UITableViewCell {
-
+    	    
+    
     @IBOutlet weak var leagueLabel: UILabel!
     @IBOutlet weak var leagueImage: UIImageView!
-
     static var resuseIdentifier:String = "customLeagueCell"
     
     static var nib:UINib?{
         return UINib.init(nibName: "SportLeagueTableViewCell", bundle: Bundle.init(for: SportLeagueTableViewCell.self))
     }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        isSkeletonable = true
+        contentView.isSkeletonable = true
+        leagueImage.isSkeletonable = true
+        leagueLabel.isSkeletonable = true
+        
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
 }
+    
+
