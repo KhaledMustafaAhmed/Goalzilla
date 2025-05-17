@@ -28,3 +28,4 @@ struct Tennisball:Sport{
     var sportName: String = "tennis"
     var assetName: String = "tennis.jpg"
 }
+
