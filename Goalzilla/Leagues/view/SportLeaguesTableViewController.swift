@@ -12,7 +12,7 @@ import ShimmerView
 
 class SportLeaguesTableViewController: UITableViewController , SportLeaguesDelegete{
 
-    var sport:String = "footbafll"
+    var sport:String = "football"
     var leaguesList:[League] = []
     
     var presenter:SportLeaguesPresenter = SportLeaguesPresenter(provider: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource()))
@@ -30,6 +30,7 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
         super.viewDidAppear(animated)
         self.tableView.isSkeletonable = true
         self.tableView.showSkeleton(usingColor: .concrete, transition: .crossDissolve(0.25))
+        
         
     }
     func failToGetLeaguesData() {
@@ -57,12 +58,16 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
         return leaguesList.count
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: SportLeagueTableViewCell.resuseIdentifier, for: indexPath) as! SportLeagueTableViewCell
         if leaguesList.isEmpty {
-                cell.showAnimatedGradientSkeleton()
+//                cell.showAnimatedGradientSkeleton()
+            let gradient = SkeletonGradient(baseColor: .concrete)
+            let animation = SkeletonAnimationBuilder().makeSlidingAnimation(withDirection: .leftRight)
+            tableView.showAnimatedGradientSkeleton(usingGradient: gradient, animation: animation, transition: .crossDissolve(0.25))
+
+//                cell.startShimmer()
             } else {
                 let currentLeague = leaguesList[indexPath.row]
                 let placeholder = Utils.sportPlaceholderImage(for: sport)
@@ -72,7 +77,8 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
                     cell.leagueImage.image = placeholder
                 }
                 cell.leagueLabel.text = currentLeague.leagueName
-                cell.hideSkeleton()
+//                cell.hideSkeleton()
+//                cell.stopShimmer()
             }
             return cell
         
