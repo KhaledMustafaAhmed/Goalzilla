@@ -21,4 +21,8 @@ struct Constants {
     static let baseURL = "https://apiv2.allsportsapi.com"
     static let from = "2024-05-18"
     static let to = "2024-05-18"
+    // write function to get dates
+    static let upcomingFrom = ""
+    static let upcomingTo = ""
+
 }
