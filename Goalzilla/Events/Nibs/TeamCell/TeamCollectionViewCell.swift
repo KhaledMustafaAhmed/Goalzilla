@@ -8,10 +8,13 @@
 import UIKit
 
 class TeamCollectionViewCell: UICollectionViewCell {
-
+    // MARK: Outlets:
+    @IBOutlet weak var teamImage: UIImageView!
+    @IBOutlet weak var teamName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        teamImage.layer.cornerRadius = 50
     }
-
 }
