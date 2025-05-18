@@ -9,12 +9,17 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class EventsCollectionViewController: UICollectionViewController {
+class EventsCollectionViewController: UICollectionViewController ,UICollectionViewDelegateFlowLayout {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Register cell classes
+        registerCells()
         
+    }
+    
+    func registerCells(){
+        self.collectionView.register(EventCell.nib, forCellWithReuseIdentifier: EventCell.resuseIdentifier)
+        self.collectionView.register(TeamCollectionViewCell.nib, forCellWithReuseIdentifier: TeamCollectionViewCell.resuseIdentifier)
     }
     
     // MARK: UICollectionViewDataSource
@@ -30,7 +35,7 @@ class EventsCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
+        	
         return cell
     }
 
