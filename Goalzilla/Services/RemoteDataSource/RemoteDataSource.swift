@@ -8,7 +8,6 @@
 protocol RemoteDataSourceProtocol{
     
     func getLeagues(with sport: String, completion: @escaping (Result<LeaguesResponse?, Error>) -> Void)
-    
     func getFootballTeams(with sport: String, leagueId: Int, completion: @escaping (Result<FootballTeamsResponse?, Error>) -> Void)
     func getBasketballTeams(with sport: String, leagueId: Int, completion: @escaping (Result<BasketballTeamsResponse?, Error>) -> Void)
     func getCrackitTeams(with sport: String, leagueId: Int, completion: @escaping (Result<CrackitTeamsResponse?, Error>) -> Void)
