@@ -8,6 +8,9 @@ import UIKit
 import Foundation
 
 enum Utils {
+    static func getDate() -> String{
+        "dwdm"
+    }
     static func isConnectedToNetwork() -> Bool{
         return true
     }

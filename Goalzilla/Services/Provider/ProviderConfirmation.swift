@@ -31,24 +31,24 @@ class ProviderConfirmation : Provider{
         remoteDataSource.getCrackitTeams(with: sport, leagueId: leagueId, completion: completion)
     }
     
-    func getFootballEvents(with sport: String, leagueId: Int, completion: @escaping (Result<FootballEventsResponse?, any Error>) -> Void) {
-        remoteDataSource.getFootballEvents(with: sport, leagueId: leagueId, completion: completion)
-    }
-    
-    func getBasketballEvents(with sport: String, leagueId: Int, completion: @escaping (Result<BasketEventsResponse?, any Error>) -> Void) {
-        remoteDataSource.getBasketballEvents(with: sport, leagueId: leagueId, completion: completion)
-    }
-    
-    func getCrackitEvents(with sport: String, leagueId: Int, completion: @escaping (Result<CricketEventsResponse?, any Error>) -> Void) {
-        remoteDataSource.getCrackitEvents(with: sport, leagueId: leagueId, completion: completion)
-    }
-    
-    func getTennisEvents(with sport: String, leagueId: Int, completion: @escaping (Result<TennisEventsResponse?, any Error>) -> Void) {
-        remoteDataSource.getTennisEvents(with: sport, leagueId: leagueId, completion: completion)
-    }
-    
     func getTennisPlayersRanking(with sport: String, leagueId: Int, completion: @escaping (Result<TennisRankingResponse?, any Error>) -> Void) {
         remoteDataSource.getTennisPlayersRanking(with: sport, leagueId: leagueId, completion: completion)
+    }
+    
+    func getFootballEvents(with type: EventSectionType, with sport: String, leagueId: Int, completion: @escaping (Result<FootballEventsResponse?, any Error>) -> Void) {
+        remoteDataSource.getFootballEvents(with: type ,with: sport, leagueId: leagueId, completion: completion)
+    }
+    
+    func getBasketballEvents(with type: EventSectionType, with sport: String, leagueId: Int, completion: @escaping (Result<BasketEventsResponse?, any Error>) -> Void) {
+        remoteDataSource.getBasketballEvents(with: type, with: sport, leagueId: leagueId, completion: completion)
+    }
+    
+    func getCrackitEvents(with type: EventSectionType, with sport: String, leagueId: Int, completion: @escaping (Result<CricketEventsResponse?, any Error>) -> Void) {
+        remoteDataSource.getCrackitEvents(with: type, with: sport, leagueId: leagueId, completion: completion)
+    }
+    
+    func getTennisEvents(with type: EventSectionType, with sport: String, leagueId: Int, completion: @escaping (Result<TennisEventsResponse?, any Error>) -> Void) {
+        remoteDataSource.getTennisEvents(with: type, with: sport, leagueId: leagueId, completion: completion)
     }
     
     func addLeagueInFavourite(league: League) {
