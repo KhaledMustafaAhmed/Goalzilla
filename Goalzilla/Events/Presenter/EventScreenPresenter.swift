@@ -178,14 +178,14 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                         print("football team data success but return with nil no data")
                         return
                     }
-                    print("Football team data: \(footballTeamData)")
+                 //   print("Football team data: \(footballTeamData)")
                     var teamArr: [TeamDataMapper] = []
                     
                     footballTeamData.forEach { FootballTeam in
                         teamArr.append(TeamDataMapper.creatTeamMapper(with: FootballTeam))
                     }
                     
-                    print("football team mappper array: \(teamArr)")
+                  //  print("football team mappper array: \(teamArr)")
                     
                     self?.view.teamDataLoaded(with: teamArr)
                     

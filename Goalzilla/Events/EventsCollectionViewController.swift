@@ -63,7 +63,7 @@ extension EventsCollectionViewController{
             case 0:
                 group = CompostionalLayout.creatGroup(alignment: .horizontal, width: .fractionalWidth(1.0), height: .fractionalHeight(0.3), item:upComingEventItem, count: self.upcomingEventsData?.count ?? 1)
             case 1:
-                group = CompostionalLayout.creatGroup(alignment: .horizontal, width: .fractionalWidth(1.0), height: .fractionalHeight(0.3), item:latestEventItem, count: self.latestEventsData?.count ?? 1)
+                group = CompostionalLayout.creatGroup(alignment: .vertical, width: .fractionalWidth(1.0), height: .fractionalHeight(0.3), item:latestEventItem, count: self.latestEventsData?.count ?? 1)
             default:
                 group = CompostionalLayout.creatGroup(alignment: .horizontal, width: .fractionalWidth(1.0), height: .fractionalHeight(0.3), item:teamItem, count: self.teamData?.count ?? 1)
             }
@@ -83,7 +83,7 @@ extension EventsCollectionViewController: EventsCollectionViewControllerProtocol
     func teamDataLoaded(with data: [TeamDataMapper]) {
         self.teamData = data
         print("team data in event controller: \(self.teamData)")
-       // collectionView.reloadData()
+       collectionView.reloadData()
     }
     
     func upcomingDataLoaded(with data: [EventDataMapper]) {

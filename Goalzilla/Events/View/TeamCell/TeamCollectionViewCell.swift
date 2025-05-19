@@ -16,22 +16,33 @@ class TeamCollectionViewCell: UICollectionViewCell {
     static var resuseIdentifier:String = "TeamCell"
 
     
-    static var nib:UINib?{
+    static var nib:UINib{
         return UINib.init(nibName: "TeamCollectionViewCell", bundle: Bundle.init(for: TeamCollectionViewCell.self))
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        teamImage.layer.cornerRadius = 50
+        print("teamImage = \(teamImage)") // should not be nil
+            print("teamName = \(teamName)")
+
         isSkeletonable = true
         contentView.isSkeletonable = true
         teamImage.isSkeletonable = true
         teamName.isSkeletonable = true
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        teamImage.layer.cornerRadius = teamImage.frame.size.width / 2
+        teamImage.clipsToBounds = true
+    }
     
     func setData(team:TeamDataMapper){
-//        teamName.text = // #put title
-//        teamImage.kf.setImage(with: URL("#put logo ") , placeholder: Utils.placeHolder)
+        teamName.text = team.name
+        if let stringURL = team.logo {
+            teamImage.kf.setImage(with: URL(string: stringURL) , placeholder: Utils.placeHolder)
+        }else{
+            teamImage.image = UIImage(named: "pic-1")
+        }
     }
 }
