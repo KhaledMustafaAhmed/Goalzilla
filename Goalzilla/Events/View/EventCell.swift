@@ -27,8 +27,6 @@ class EventCell: UICollectionViewCell {
         return UINib.init(nibName: "EventCell", bundle: Bundle.init(for: EventCell.self))
     }
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         isSkeletonable = true
@@ -48,10 +46,9 @@ class EventCell: UICollectionViewCell {
         awayTeamTitle.text = event.eventAwayTeam ?? "nodata"
         eventTime.text = event.eventTime ?? "nodata"
         eventDate.text = event.eventDate ?? "nodata"
-//        homeTeamImage.kf.setImage(with: URL(string: event.eventHomeTeamLogo ?? ""), placeholder: Utils.placeHolder)
-//        awayTeamImage.kf.setImage(with: URL(string: event.eventAwayTeamLogo ?? ""), placeholder: Utils.placeHolder)
-//        eventFinalResultPrimary.text = event.eventFinalResult
-//        eventFinalResultSecondary.text = event.eventAwayFinalResultForCricket
+        homeTeamImage.kf.setImage(with: URL(string: event.eventHomeTeamLogo ?? ""), placeholder: Utils.placeHolder)
+        awayTeamImage.kf.setImage(with: URL(string: event.eventAwayTeamLogo ?? ""), placeholder: Utils.placeHolder)
+        eventFinalResultPrimary.text = event.eventFinalResult
+        eventFinalResultSecondary.text = event.eventAwayFinalResultForCricket ?? ""
     }
-
 }

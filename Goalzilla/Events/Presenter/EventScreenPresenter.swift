@@ -86,9 +86,9 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                     print(eventArr)
                     switch type {
                     case .upcoming:
-                        self.view.upcomingEventsData = eventArr
+                        self.view.upcomingDataLoaded(with: eventArr)
                     case .latest:
-                        self.view.latestEventsData = eventArr
+                        self.view.latestDataLoaded(with: eventArr)
                     }
                     
                 case .failure(let error):
@@ -119,9 +119,9 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                     
                     switch type {
                     case .upcoming:
-                        self.view.upcomingEventsData = eventArr
+                        self.view.upcomingDataLoaded(with: eventArr)
                     case .latest:
-                        self.view.latestEventsData = eventArr
+                        self.view.latestDataLoaded(with: eventArr)
                     }
                     
                 case .failure(let error):
@@ -151,9 +151,10 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                     
                     switch type {
                     case .upcoming:
-                        self.view.upcomingEventsData = eventArr
+                        print(eventArr)
+                        self.view.upcomingDataLoaded(with: eventArr)
                     case .latest:
-                        self.view.latestEventsData = eventArr
+                        self.view.latestDataLoaded(with: eventArr)
                     }
                     
                 case .failure(let error):
@@ -167,7 +168,106 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
     }
     
     func fetchTeamData(for sport: String, leagueId: Int) {
-        
+        switch sport {
+        case "football":
+            providerService.getFootballTeams(with: sport, leagueId: leagueId) {[weak self] result in
+                switch result{
+                case .success(let footballTeamResponse):
+                    
+                    guard let footballTeamData = footballTeamResponse?.result else {
+                        print("football team data success but return with nil no data")
+                        return
+                    }
+                    print("Football team data: \(footballTeamData)")
+                    var teamArr: [TeamDataMapper] = []
+                    
+                    footballTeamData.forEach { FootballTeam in
+                        teamArr.append(TeamDataMapper.creatTeamMapper(with: FootballTeam))
+                    }
+                    
+                    print("football team mappper array: \(teamArr)")
+                    
+                    self?.view.teamDataLoaded(with: teamArr)
+                    
+                case .failure(let error):
+                    print("football team call result faild in fetchTeamData \(error.localizedDescription)")
+                }
+            }
+        case "basketball":
+            providerService.getBasketballTeams(with: sport, leagueId: leagueId) {[weak self] result in
+                switch result{
+                case .success(let basketballTeamResponse):
+                    
+                    guard let basketballTeamData = basketballTeamResponse?.result else {
+                        print("basketball team data success but return with nil no data")
+                        return
+                    }
+                    print("basketball team data: \(basketballTeamData)")
+                    var teamArr: [TeamDataMapper] = []
+                    
+                    basketballTeamData.forEach { BasketballTeam in
+                        teamArr.append(TeamDataMapper.creatTeamMapper(with: BasketballTeam))
+                    }
+                    
+                    print("basketball team mappper array: \(teamArr)")
+                    
+                    self?.view.teamDataLoaded(with: teamArr)
+                    
+                case .failure(let error):
+                    print("basketball team call result faild in fetchTeamData \(error.localizedDescription)")
+                }
+            }
+        case "tennis":
+            providerService.getTennisPlayersRanking(with: sport, leagueId: leagueId) {[weak self] result in
+                switch result{
+                case .success(let tennisTeamResponse):
+                    
+                    guard let tennisTeamData = tennisTeamResponse?.result else {
+                        print("tennis team data success but return with nil no data")
+                        return
+                    }
+                    print("tennis team data: \(tennisTeamData)")
+                    var teamArr: [TeamDataMapper] = []
+                    
+                    tennisTeamData.forEach { tennisTeam in
+                        teamArr.append(TeamDataMapper.creatTeamMapper(with: tennisTeam))
+                    }
+                    
+                    print("tennis team mappper array: \(teamArr)")
+                    
+                    self?.view.teamDataLoaded(with: teamArr)
+                    
+                case .failure(let error):
+                    print("tennis team call result faild in fetchTeamData \(error.localizedDescription)")
+                }
+            }
+        case "cricket":
+            providerService.getCrackitTeams(with: sport, leagueId: leagueId) {[weak self] result in
+                switch result{
+                case .success(let cricketTeamResponse):
+                    
+                    guard let cricketTeamData = cricketTeamResponse?.result else {
+                        print("cricket team data success but return with nil no data")
+                        return
+                    }
+                    print("cricket team data: \(cricketTeamData)")
+                    var teamArr: [TeamDataMapper] = []
+                    
+                    cricketTeamData.forEach { cricketTeam in
+                        teamArr.append(TeamDataMapper.creatTeamMapper(with: cricketTeam))
+                    }
+                    
+                    print("cricket team mappper array: \(teamArr)")
+                    
+                    self?.view.teamDataLoaded(with: teamArr)
+                    
+                case .failure(let error):
+                    print("cricket team call result faild in fetchTeamData \(error.localizedDescription)")
+                }
+            }
+        default:
+            break
+        }
     }
     
 }

@@ -32,9 +32,13 @@ class EventsCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = EventScreenPresenter(eventView: self, providerService: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource()))
+        
         registerCells()
+        
         collectionView.collectionViewLayout = createLayout()
+        
         configureNAvigationBar()
+        
         presenterConfigration()
     }
     
@@ -45,6 +49,7 @@ extension EventsCollectionViewController{
     private func presenterConfigration(){
         presenter.fetchEvent(with: .upcoming, sport: sport, leagueId: leagueId)
         presenter.fetchEvent(with: .latest, sport: sport, leagueId: leagueId)
+        presenter.fetchTeamData(for: sport, leagueId: leagueId)
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout{
@@ -68,17 +73,17 @@ extension EventsCollectionViewController{
     }
 }
 
-
 // MARK: Event View States:
 extension EventsCollectionViewController: EventsCollectionViewControllerProtocol{
-    func latestDataLoaded(with data: [EventDataMapper]) {        
+    func latestDataLoaded(with data: [EventDataMapper]) {
         self.latestEventsData = data
         collectionView.reloadData()
     }
     
     func teamDataLoaded(with data: [TeamDataMapper]) {
         self.teamData = data
-        collectionView.reloadData()
+        print("team data in event controller: \(self.teamData)")
+       // collectionView.reloadData()
     }
     
     func upcomingDataLoaded(with data: [EventDataMapper]) {
