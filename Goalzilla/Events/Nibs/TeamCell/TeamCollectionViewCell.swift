@@ -28,4 +28,10 @@ class TeamCollectionViewCell: UICollectionViewCell {
         teamImage.isSkeletonable = true
         teamName.isSkeletonable = true
     }
+    
+    
+    func setData(team:TeamDataMapper){
+//        teamName.text = // #put title
+//        teamImage.kf.setImage(with: URL("#put logo ") , placeholder: Utils.placeHolder)
+    }
 }

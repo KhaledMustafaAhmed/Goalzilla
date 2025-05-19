@@ -26,5 +26,7 @@ enum Utils {
             return UIImage(named: "cricketLeague")
         }
     }
+    
+    static var placeHolder = UIImage(named: "dummy")
 }
 		

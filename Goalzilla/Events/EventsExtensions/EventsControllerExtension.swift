@@ -28,31 +28,51 @@ extension EventsCollectionViewController{
     }
     
     func eventCellRegister(){
-        // write code for register event cell
+        self.collectionView.register(EventCell.nib, forCellWithReuseIdentifier: EventCell.resuseIdentifier)
     }
     
     func teamCellRegister(){
-        // write code for register team cell
+        self.collectionView.register(TeamCollectionViewCell.nib, forCellWithReuseIdentifier: TeamCollectionViewCell.resuseIdentifier)
     }
 }
 
 // MARK: UICollectionViewDataSource
 extension EventsCollectionViewController {
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 0
+        return 3;
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 0
+        switch section {
+           case 0: return upcomingEventsData?.count ?? 0
+           case 1: return latestEventsData?.count ?? 0
+           default: return teamData?.count ?? 0
+           }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        // switch on section
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "", for: indexPath)
-        
-        return cell
+        switch indexPath.section {
+
+           case 0, 1:
+               guard let cell = collectionView
+                   .dequeueReusableCell(withReuseIdentifier: EventCell.resuseIdentifier,
+                                        for: indexPath) as? EventCell else { fatalError() }
+
+               let match = (indexPath.section == 0)
+                          ? upcomingEventsData[indexPath.item]
+                          : latestEventsData[indexPath.item]
+            cell.setData(event: match)
+               return cell
+
+           default:
+               guard let cell = collectionView
+                   .dequeueReusableCell(withReuseIdentifier: TeamCollectionViewCell.resuseIdentifier,
+                                        for: indexPath) as? TeamCollectionViewCell else { fatalError() }
+
+               cell.setData(team: teamData[indexPath.item])
+               return cell
+           }
     }
 }
 

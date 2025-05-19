@@ -7,6 +7,7 @@
 
 import UIKit
 import SkeletonView
+import Kingfisher
 
 class EventCell: UICollectionViewCell {
 
@@ -40,6 +41,17 @@ class EventCell: UICollectionViewCell {
         awayTeamTitle.isSkeletonable = true
         homeTeamImage.isSkeletonable = true
         homeTeamTitle.isSkeletonable = true
+    }
+    
+    func setData(event:EventDataMapper){
+        homeTeamTitle.text = event.eventHomeTeam
+        awayTeamTitle.text = event.eventAwayTeam
+        eventTime.text = event.eventTime
+        eventDate.text = event.eventDate
+        homeTeamImage.kf.setImage(with: URL(string: event.eventHomeTeamLogo ?? ""), placeholder: Utils.placeHolder)
+        awayTeamImage.kf.setImage(with: URL(string: event.eventAwayTeamLogo ?? ""), placeholder: Utils.placeHolder)
+        eventFinalResultPrimary.text = event.eventFinalResult
+//        eventFinalResultSecondary.text = event.eventAwayFinalResultForCricket
     }
 
 }

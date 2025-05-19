@@ -8,11 +8,13 @@
 import UIKit
 
     
-class EventsCollectionViewController: UICollectionViewController ,UICollectionViewDelegateFlowLayout {
+class EventsCollectionViewController: UICollectionViewController{
     
     // MARK: Properties
     
     var sport : String!
+    
+    var leagueId: Int!
     
     var upcomingEventsData: [EventDataMapper]!
     
@@ -21,44 +23,53 @@ class EventsCollectionViewController: UICollectionViewController ,UICollectionVi
     var teamData: [TeamDataMapper]!
     
     var presenter: EventScreenPresenterProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = EventScreenPresenter(eventView: self, providerService: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource()))
+        self.registerCells()
+        self.collectionView.collectionViewLayout = createLayout()
         configureNAvigationBar()
         presenterConfigration()
     }
     
+    
+    
 }
 // MARK:  Presenter Configuration
 extension EventsCollectionViewController{
+    
     private func presenterConfigration(){
-        presenter = EventScreenPresenter(eventView: self, providerService: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource()))
-        //presenter.fetchEvent(with: .upcoming, sport: sport, leagueId: 1)
-       // presenter.fetchEvent(with: .latest, sport: sport, leagueId: 1)
-      //presenter.fetchTeamData(for: sport, leagueId: 3)
+        presenter.fetchEvent(with: .upcoming, sport: sport, leagueId: leagueId)
+        presenter.fetchEvent(with: .latest, sport: sport, leagueId: leagueId)
+        self.collectionView.reloadData()
+//        presenter.fetchTeamData(for: sport, leagueId: 3)
     }
+    
+    private func createLayout() -> UICollectionViewCompositionalLayout{
+        var group:NSCollectionLayoutGroup!
+    
         
+        let upComingEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.9), height: .fractionalHeight(1.0), spacing: 10)
+        let latestEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.9), height: .fractionalHeight(1.0), spacing: 10)
+        let teamItem = CompostionalLayout.createItem(width: .fractionalWidth(0.9), height: .fractionalHeight(1.0), spacing: 10)
+        let layout = UICollectionViewCompositionalLayout{ sectionIndex , enviroment in
+            
+            switch(sectionIndex){
+            case 0:
+                group = CompostionalLayout.creatGroup(alignment: .horizontal, width: .fractionalWidth(1.0), height: .fractionalHeight(0.3), item:upComingEventItem, count: self.upcomingEventsData?.count ?? 1)
+            case 1:
+                group = CompostionalLayout.creatGroup(alignment: .horizontal, width: .fractionalWidth(1.0), height: .fractionalHeight(0.3), item:latestEventItem, count: self.latestEventsData?.count ?? 1)
+            default:
+                group = CompostionalLayout.creatGroup(alignment: .horizontal, width: .fractionalWidth(1.0), height: .fractionalHeight(0.3), item:teamItem, count: self.teamData?.count ?? 1)
+            }
+            return NSCollectionLayoutSection(group: group)
+        }
+        
+        return layout
     }
     
-    func registerCells(){
-        self.collectionView.register(EventCell.nib, forCellWithReuseIdentifier: EventCell.resuseIdentifier)
-        self.collectionView.register(TeamCollectionViewCell.nib, forCellWithReuseIdentifier: TeamCollectionViewCell.resuseIdentifier)
-    }
     
-    // MARK: UICollectionViewDataSource
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        	
-        return cell
-    }
-
 }
+
+

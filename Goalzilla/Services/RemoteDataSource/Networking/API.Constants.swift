@@ -22,7 +22,7 @@ struct Constants {
     static let from = "2024-05-18"
     static let to = "2024-05-18"
     // write function to get dates
-    static let upcomingFrom = ""
-    static let upcomingTo = ""
+    static let upcomingFrom = "2025-05-18"
+    static let upcomingTo = "2025-05-18"
 
 }

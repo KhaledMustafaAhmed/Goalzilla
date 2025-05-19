@@ -92,4 +92,11 @@ extension SportLeaguesTableViewController: SkeletonTableViewDataSource {
                                 -> ReusableCellIdentifier {
         SportLeagueTableViewCell.resuseIdentifier	
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let eventsVC = self.storyboard?.instantiateViewController(identifier: "EventsCollectionViewController") as! EventsCollectionViewController
+        eventsVC.sport = self.sport
+        eventsVC.leagueId = leaguesList[indexPath.row].leagueKey ?? 1
+        self.navigationController?.pushViewController(eventsVC, animated: true)
+    }
 }

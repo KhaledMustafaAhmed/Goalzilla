@@ -30,6 +30,7 @@ class EventScreenPresenter{
 
 // MARK: Fetching data functions logic
 extension EventScreenPresenter: EventScreenPresenterProtocol{
+    
     func fetchEvent(with type: EventSectionType, sport: String ,leagueId: Int) {
         switch sport{
         case "football":
