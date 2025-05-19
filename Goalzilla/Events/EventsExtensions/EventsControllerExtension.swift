@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 // MARK: Configure Navigation Bar Data
 extension EventsCollectionViewController{
     func configureNAvigationBar(){
@@ -24,7 +23,7 @@ extension EventsCollectionViewController{
 extension EventsCollectionViewController{
     func registerCells(){
         eventCellRegister()
-        //teamCellRegister()
+        teamCellRegister()
     }
     
     func eventCellRegister(){
@@ -44,9 +43,9 @@ extension EventsCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-           case 0: return upcomingEventsData?.count ?? 0
-           case 1: return latestEventsData?.count ?? 0
-           default: return teamData?.count ?? 0
+           case 0: return upcomingEventsData.count
+           case 1: return latestEventsData.count
+           default: return teamData.count
            }
     }
     
@@ -60,8 +59,8 @@ extension EventsCollectionViewController {
                                         for: indexPath) as? EventCell else { fatalError() }
 
                let match = (indexPath.section == 0)
-                          ? upcomingEventsData[indexPath.item]
-                          : latestEventsData[indexPath.item]
+                          ? upcomingEventsData[indexPath.row]
+                          : latestEventsData[indexPath.row]
             cell.setData(event: match)
                return cell
 
@@ -70,10 +69,12 @@ extension EventsCollectionViewController {
                    .dequeueReusableCell(withReuseIdentifier: TeamCollectionViewCell.resuseIdentifier,
                                         for: indexPath) as? TeamCollectionViewCell else { fatalError() }
 
-               cell.setData(team: teamData[indexPath.item])
+               cell.setData(team: teamData[indexPath.row])
                return cell
            }
     }
+    
+    
 }
 
 

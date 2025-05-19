@@ -20,7 +20,6 @@ struct CompostionalLayout{
     }
     
     static func creatGroup(alignment:CompositionalGroupAlignment , width:NSCollectionLayoutDimension , height:NSCollectionLayoutDimension,items:[NSCollectionLayoutItem]) -> NSCollectionLayoutGroup{
-        
         switch(alignment){
             case .vertical:
             return NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: width, heightDimension: height) , subitems: items)

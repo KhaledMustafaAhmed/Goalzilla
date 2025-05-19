@@ -113,8 +113,8 @@ extension NetworkServiceProtocol {
                    "met": "Fixtures",
                    "APIkey": Constants.apiKey,
                    "leagueId": leagueId,
-                   "from" : Constants.from,
-                   "to": Constants.to
+                   "from" : Constants.upcomingFrom,
+                   "to": Constants.upcomingTo
                ]
             case .latest:
                 parameters = [

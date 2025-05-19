@@ -86,9 +86,9 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                     print(eventArr)
                     switch type {
                     case .upcoming:
-                        self.view.upcomingEventsData = eventArr
+                        self.view.upcomingDataLoaded(with: eventArr)
                     case .latest:
-                        self.view.latestEventsData = eventArr
+                        self.view.latestDataLoaded(with: eventArr)
                     }
                     
                 case .failure(let error):
@@ -119,9 +119,9 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                     
                     switch type {
                     case .upcoming:
-                        self.view.upcomingEventsData = eventArr
+                        self.view.upcomingDataLoaded(with: eventArr)
                     case .latest:
-                        self.view.latestEventsData = eventArr
+                        self.view.latestDataLoaded(with: eventArr)
                     }
                     
                 case .failure(let error):
@@ -151,9 +151,9 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                     
                     switch type {
                     case .upcoming:
-                        self.view.upcomingEventsData = eventArr
+                        self.view.upcomingDataLoaded(with: eventArr)
                     case .latest:
-                        self.view.latestEventsData = eventArr
+                        self.view.latestDataLoaded(with: eventArr)
                     }
                     
                 case .failure(let error):
