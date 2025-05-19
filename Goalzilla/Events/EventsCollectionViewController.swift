@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol EventsCollectionViewControllerProtocol{
+    func upcomingDataLoaded(with data: [EventDataMapper])
+    func latestDataLoaded(with data: [EventDataMapper])
+    func teamDataLoaded(with data: [TeamDataMapper])
+}
     
-class EventsCollectionViewController: UICollectionViewController{
+class EventsCollectionViewController: UICollectionViewController {
     
     // MARK: Properties
     
@@ -27,13 +32,11 @@ class EventsCollectionViewController: UICollectionViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = EventScreenPresenter(eventView: self, providerService: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource()))
-        self.registerCells()
-        self.collectionView.collectionViewLayout = createLayout()
+        registerCells()
+        collectionView.collectionViewLayout = createLayout()
         configureNAvigationBar()
         presenterConfigration()
     }
-    
-    
     
 }
 // MARK:  Presenter Configuration
@@ -42,14 +45,10 @@ extension EventsCollectionViewController{
     private func presenterConfigration(){
         presenter.fetchEvent(with: .upcoming, sport: sport, leagueId: leagueId)
         presenter.fetchEvent(with: .latest, sport: sport, leagueId: leagueId)
-        self.collectionView.reloadData()
-//        presenter.fetchTeamData(for: sport, leagueId: 3)
     }
     
     private func createLayout() -> UICollectionViewCompositionalLayout{
         var group:NSCollectionLayoutGroup!
-    
-        
         let upComingEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.9), height: .fractionalHeight(1.0), spacing: 10)
         let latestEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.9), height: .fractionalHeight(1.0), spacing: 10)
         let teamItem = CompostionalLayout.createItem(width: .fractionalWidth(0.9), height: .fractionalHeight(1.0), spacing: 10)
@@ -65,11 +64,25 @@ extension EventsCollectionViewController{
             }
             return NSCollectionLayoutSection(group: group)
         }
-        
         return layout
     }
-    
-    
 }
 
 
+// MARK: Event View States:
+extension EventsCollectionViewController: EventsCollectionViewControllerProtocol{
+    func latestDataLoaded(with data: [EventDataMapper]) {        
+        self.latestEventsData = data
+        collectionView.reloadData()
+    }
+    
+    func teamDataLoaded(with data: [TeamDataMapper]) {
+        self.teamData = data
+        collectionView.reloadData()
+    }
+    
+    func upcomingDataLoaded(with data: [EventDataMapper]) {
+        self.upcomingEventsData = data
+        collectionView.reloadData()
+    }
+}

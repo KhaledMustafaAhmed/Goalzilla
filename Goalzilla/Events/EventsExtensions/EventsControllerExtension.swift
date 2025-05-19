@@ -24,7 +24,7 @@ extension EventsCollectionViewController{
 extension EventsCollectionViewController{
     func registerCells(){
         eventCellRegister()
-        teamCellRegister()
+        //teamCellRegister()
     }
     
     func eventCellRegister(){

@@ -46,22 +46,21 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                         print("data is nil when returning from api call in football event screen")
                         return
                     }
-                    
                     var eventArr: [EventDataMapper] = []
                     
                     footballEvents.forEach {(event) in
                         eventArr.append(EventDataMapper.createEvent(from: event))
                     }
                     
+                    
                     switch type {
                     case .upcoming:
-                        self.view.upcomingEventsData = eventArr
+                        self.view.upcomingDataLoaded(with: eventArr)
                     case .latest:
-                        self.view.latestEventsData = eventArr
+                        self.view.latestDataLoaded(with: eventArr)
                     }
                     
                 case .failure(let error):
-                    
                     print("Error in getting football event in event screen with message: \(error.localizedDescription)")
                 }
             }
@@ -84,7 +83,7 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                     basketballEvents.forEach {(event) in
                         eventArr.append(EventDataMapper.createEvent(from: event))
                     }
-                    
+                    print(eventArr)
                     switch type {
                     case .upcoming:
                         self.view.upcomingEventsData = eventArr

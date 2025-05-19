@@ -23,7 +23,7 @@ class EventCell: UICollectionViewCell {
     static var resuseIdentifier:String = "EventCell"
 
     
-    static var nib:UINib?{
+    static var nib:UINib{
         return UINib.init(nibName: "EventCell", bundle: Bundle.init(for: EventCell.self))
     }
     
@@ -44,13 +44,13 @@ class EventCell: UICollectionViewCell {
     }
     
     func setData(event:EventDataMapper){
-        homeTeamTitle.text = event.eventHomeTeam
-        awayTeamTitle.text = event.eventAwayTeam
-        eventTime.text = event.eventTime
-        eventDate.text = event.eventDate
-        homeTeamImage.kf.setImage(with: URL(string: event.eventHomeTeamLogo ?? ""), placeholder: Utils.placeHolder)
-        awayTeamImage.kf.setImage(with: URL(string: event.eventAwayTeamLogo ?? ""), placeholder: Utils.placeHolder)
-        eventFinalResultPrimary.text = event.eventFinalResult
+        homeTeamTitle.text = event.eventHomeTeam ?? "nodata"
+        awayTeamTitle.text = event.eventAwayTeam ?? "nodata"
+        eventTime.text = event.eventTime ?? "nodata"
+        eventDate.text = event.eventDate ?? "nodata"
+//        homeTeamImage.kf.setImage(with: URL(string: event.eventHomeTeamLogo ?? ""), placeholder: Utils.placeHolder)
+//        awayTeamImage.kf.setImage(with: URL(string: event.eventAwayTeamLogo ?? ""), placeholder: Utils.placeHolder)
+//        eventFinalResultPrimary.text = event.eventFinalResult
 //        eventFinalResultSecondary.text = event.eventAwayFinalResultForCricket
     }
 
