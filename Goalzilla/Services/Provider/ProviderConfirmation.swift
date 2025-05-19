@@ -51,14 +51,15 @@ class ProviderConfirmation : Provider{
         remoteDataSource.getTennisEvents(with: type, with: sport, leagueId: leagueId, completion: completion)
     }
     
-    func addLeagueInFavourite(league: League) {
-        localDataSource.addLeagueInFavourite(league: league)
+    func getAllFavourites() -> [FavouritesModel]? {
+        localDataSource.getAllFavourites()
     }
     
-    func removeLeagueFromFavourite(league: League) {
-        localDataSource.removeLeagueFromFavourite(league: league)
+    func addLeagueToFavourites(_ league: FavouritesModel) {
+        localDataSource.addLeagueToFavourites(league)
     }
     
-
-
+    func removeLeagueFromFavourites(_ league: FavouritesModel) -> Bool {
+        localDataSource.removeLeagueFromFavourites(league)
+    }
 }

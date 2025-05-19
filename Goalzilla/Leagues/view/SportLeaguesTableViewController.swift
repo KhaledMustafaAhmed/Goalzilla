@@ -15,7 +15,7 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
     var sport:String = "football"
     var leaguesList:[League] = []
     
-    var presenter:SportLeaguesPresenter = SportLeaguesPresenter(provider: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource()))
+    var presenter:SportLeaguesPresenter = SportLeaguesPresenter(provider: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource(favouriteModelManager: FavouritesModelManager())))
     
     override func viewDidLoad() {
         super.viewDidLoad()
