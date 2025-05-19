@@ -16,10 +16,14 @@ protocol EventsCollectionViewControllerProtocol{
 class EventsCollectionViewController: UICollectionViewController {
     
     // MARK: Properties
-    
+        
     var sport : String!
     
     var leagueId: Int!
+    
+    var leagueName: String!
+    
+    var leagueLogo: String!
     
     var upcomingEventsData: [EventDataMapper]!
     
