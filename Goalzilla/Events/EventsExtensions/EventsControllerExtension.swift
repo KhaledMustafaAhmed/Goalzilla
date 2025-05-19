@@ -22,10 +22,15 @@ extension EventsCollectionViewController{
 // MARK: custom cells registeration
 extension EventsCollectionViewController{
     func registerCells(){
+        registerSectionHeader()
         eventCellRegister()
         teamCellRegister()
     }
     
+    func registerSectionHeader(){
+        self.collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: SectionHeaderView.reuseIdentifier)
+
+    }
     func eventCellRegister(){
         self.collectionView.register(EventCell.nib, forCellWithReuseIdentifier: EventCell.resuseIdentifier)
     }

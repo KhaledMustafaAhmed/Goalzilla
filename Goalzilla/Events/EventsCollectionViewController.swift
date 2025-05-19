@@ -55,6 +55,14 @@ extension EventsCollectionViewController{
         let upComingEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.99), height: .fractionalHeight(1.0), spacing: 10)
         let latestEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.99), height: .fractionalHeight(1.0), spacing: 10)
         let teamItem = CompostionalLayout.createItem(width: .fractionalWidth(0.9), height: .fractionalHeight(1.0), spacing: 10)
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+                 layoutSize: headerSize,
+                 elementKind: UICollectionView.elementKindSectionHeader,
+                 alignment: .top)
+
+        
+        
         let layout = UICollectionViewCompositionalLayout{ sectionIndex , enviroment in
         var section: NSCollectionLayoutSection!
             switch(sectionIndex){
@@ -71,16 +79,29 @@ extension EventsCollectionViewController{
                 section = NSCollectionLayoutSection(group: group)
                 section.orthogonalScrollingBehavior = .groupPagingCentered
             }
-         
+            section.boundarySupplementaryItems = [sectionHeader]
             return section
-            
-            
-            
-            
         }
         return layout
     }
     
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.reuseIdentifier,for: indexPath) as! SectionHeaderView
+            
+            let title: String
+            switch indexPath.section {
+            case 0:
+                title = "Upcoming Events"
+            case 1:
+                title = "Latest Events"
+            default:
+                title = "Teams"
+            }
+            headerView.configure(with: title)
+            
+            return headerView
+    }
 }
 
 
@@ -107,3 +128,4 @@ extension EventsCollectionViewController: EventsCollectionViewControllerProtocol
 
     }
 }
+
