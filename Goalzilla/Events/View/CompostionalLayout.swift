@@ -11,6 +11,7 @@ enum CompositionalGroupAlignment{
     case vertical
     case horizontal
 }
+
 struct CompostionalLayout{
     
     static func createItem(width: NSCollectionLayoutDimension , height:NSCollectionLayoutDimension ,spacing:CGFloat) -> NSCollectionLayoutItem{

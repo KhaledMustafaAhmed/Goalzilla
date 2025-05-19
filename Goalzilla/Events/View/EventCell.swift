@@ -27,8 +27,6 @@ class EventCell: UICollectionViewCell {
         return UINib.init(nibName: "EventCell", bundle: Bundle.init(for: EventCell.self))
     }
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         isSkeletonable = true
@@ -63,6 +61,6 @@ class EventCell: UICollectionViewCell {
         awayTeamImage.clipsToBounds = true
         awayTeamImage.layer.borderWidth = 2
         awayTeamImage.layer.borderColor = UIColor.white.cgColor
-    }
 
+    }
 }

@@ -57,7 +57,6 @@ extension EventsCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch indexPath.section {
-
            case 0, 1:
                guard let cell = collectionView
                    .dequeueReusableCell(withReuseIdentifier: EventCell.resuseIdentifier,
@@ -74,7 +73,11 @@ extension EventsCollectionViewController {
                    .dequeueReusableCell(withReuseIdentifier: TeamCollectionViewCell.resuseIdentifier,
                                         for: indexPath) as? TeamCollectionViewCell else { fatalError() }
 
-               cell.setData(team: teamData[indexPath.row])
+
+            cell.setData(team: teamData[indexPath.row])
+            cell.layer.borderWidth = 5
+            cell.layer.borderColor = UIColor.red.cgColor
+            cell.layer.cornerRadius = 50
                return cell
            }
     }

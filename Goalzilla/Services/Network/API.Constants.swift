@@ -24,4 +24,5 @@ struct Constants {
     // write function to get dates
     static let upcomingFrom = "2025-05-05"
     static let upcomingTo = "2025-05-18"
+
 }

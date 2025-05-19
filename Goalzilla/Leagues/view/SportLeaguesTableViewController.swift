@@ -15,7 +15,7 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
     var sport:String = "football"
     var leaguesList:[League] = []
     
-    var presenter:SportLeaguesPresenter = SportLeaguesPresenter(provider: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource()))
+    var presenter:SportLeaguesPresenter = SportLeaguesPresenter(provider: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource(favouriteModelManager: FavouritesModelManager())))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,9 +95,10 @@ extension SportLeaguesTableViewController: SkeletonTableViewDataSource {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let eventsVC = self.storyboard?.instantiateViewController(identifier: "EventsCollectionViewController") as! EventsCollectionViewController
-        print("\(self.sport) ,,, \(leaguesList[indexPath.row].leagueKey)")
         eventsVC.sport = self.sport
-        eventsVC.leagueId = leaguesList[indexPath.row].leagueKey ?? 207
+        eventsVC.leagueName = leaguesList[indexPath.row].leagueName
+        eventsVC.leagueId = leaguesList[indexPath.row].leagueKey
+        eventsVC.leagueLogo = leaguesList[indexPath.row].leagueLogo
         self.navigationController?.pushViewController(eventsVC, animated: true)
     }
 }
