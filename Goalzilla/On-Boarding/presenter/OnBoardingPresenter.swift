@@ -7,7 +7,16 @@
 
 import Foundation
 
-class OnBoardingPresenter {
+protocol OnBoardingPresenterProtocol{
+    
+    func attachView(view:OnBoardingViewDelegete)
+    
+    func getSlidesData() -> Void
+    
+    func userHasOnBoarded()->Void
+}
+
+class OnBoardingPresenter: OnBoardingPresenterProtocol {
 
     var onBoardingView:OnBoardingViewDelegete!
     
