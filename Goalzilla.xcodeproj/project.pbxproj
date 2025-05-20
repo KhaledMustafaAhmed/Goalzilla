@@ -12,8 +12,19 @@
 		727684AB2DD7CB3E0007F8F9 /* ShimmerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 727684AA2DD7CB3E0007F8F9 /* ShimmerSwift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		786229492DDBD8230076173D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7248B18C2DCD038C008F1BFD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7248B1932DCD038C008F1BFD;
+			remoteInfo = Goalzilla;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		7248B1942DCD038C008F1BFD /* Goalzilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Goalzilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		786229452DDBD8230076173D /* GoalzillaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoalzillaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B961B894D9284981635A900C /* Pods_Goalzilla.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goalzilla.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C99D6D59A762730897E12F2D /* Pods-Goalzilla.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goalzilla.debug.xcconfig"; path = "Target Support Files/Pods-Goalzilla/Pods-Goalzilla.debug.xcconfig"; sourceTree = "<group>"; };
 		F94CC471FFCCB470A651BDBF /* Pods-Goalzilla.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goalzilla.release.xcconfig"; path = "Target Support Files/Pods-Goalzilla/Pods-Goalzilla.release.xcconfig"; sourceTree = "<group>"; };
@@ -38,6 +49,11 @@
 			path = Goalzilla;
 			sourceTree = "<group>";
 		};
+		786229462DDBD8230076173D /* GoalzillaTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = GoalzillaTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +67,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		786229422DDBD8230076173D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -58,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				7248B1962DCD038C008F1BFD /* Goalzilla */,
+				786229462DDBD8230076173D /* GoalzillaTests */,
 				7248B1952DCD038C008F1BFD /* Products */,
 				A617399EC58849B5282B44BD /* Pods */,
 				DBF52069D84597DD7503F7EE /* Frameworks */,
@@ -68,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				7248B1942DCD038C008F1BFD /* Goalzilla.app */,
+				786229452DDBD8230076173D /* GoalzillaTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -114,6 +139,29 @@
 			productReference = 7248B1942DCD038C008F1BFD /* Goalzilla.app */;
 			productType = "com.apple.product-type.application";
 		};
+		786229442DDBD8230076173D /* GoalzillaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7862294D2DDBD8230076173D /* Build configuration list for PBXNativeTarget "GoalzillaTests" */;
+			buildPhases = (
+				786229412DDBD8230076173D /* Sources */,
+				786229422DDBD8230076173D /* Frameworks */,
+				786229432DDBD8230076173D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7862294A2DDBD8230076173D /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				786229462DDBD8230076173D /* GoalzillaTests */,
+			);
+			name = GoalzillaTests;
+			packageProductDependencies = (
+			);
+			productName = GoalzillaTests;
+			productReference = 786229452DDBD8230076173D /* GoalzillaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -121,11 +169,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 1630;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					7248B1932DCD038C008F1BFD = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					786229442DDBD8230076173D = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 7248B1932DCD038C008F1BFD;
 					};
 				};
 			};
@@ -148,12 +200,20 @@
 			projectRoot = "";
 			targets = (
 				7248B1932DCD038C008F1BFD /* Goalzilla */,
+				786229442DDBD8230076173D /* GoalzillaTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7248B1922DCD038C008F1BFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		786229432DDBD8230076173D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -193,9 +253,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Goalzilla/Pods-Goalzilla-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Goalzilla/Pods-Goalzilla-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -212,7 +276,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		786229412DDBD8230076173D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7862294A2DDBD8230076173D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7248B1932DCD038C008F1BFD /* Goalzilla */;
+			targetProxy = 786229492DDBD8230076173D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7248B1AB2DCD038F008F1BFD /* Debug */ = {
@@ -392,6 +471,44 @@
 			};
 			name = Release;
 		};
+		7862294B2DDBD8230076173D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.khaled.GoalzillaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Goalzilla.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Goalzilla";
+			};
+			name = Debug;
+		};
+		7862294C2DDBD8230076173D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.khaled.GoalzillaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Goalzilla.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Goalzilla";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,6 +526,15 @@
 			buildConfigurations = (
 				7248B1AB2DCD038F008F1BFD /* Debug */,
 				7248B1AC2DCD038F008F1BFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7862294D2DDBD8230076173D /* Build configuration list for PBXNativeTarget "GoalzillaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7862294B2DDBD8230076173D /* Debug */,
+				7862294C2DDBD8230076173D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
