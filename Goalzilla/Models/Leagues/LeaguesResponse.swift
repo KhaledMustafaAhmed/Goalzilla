@@ -6,12 +6,12 @@
 //
 
 // It was Applicable for all Sports
-struct LeaguesResponse : Codable{
+struct LeaguesResponse : Codable, Equatable{
     var success:Int?
     var result:[League]?
 }
 
-struct League:Codable{
+struct League:Codable, Equatable{
     var leagueKey:Int?
     var leagueName:String?
     var leagueLogo:String?

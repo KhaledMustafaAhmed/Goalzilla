@@ -15,8 +15,6 @@
 /// and removing a league from favourites.
 class LocalDataSource: LocalDataSourceProtocol {
  
-    
-    
     /// The favourite leagues manager that handles the Core Data operations.
     private let favouriteModelManager: FavouritesModelManagerProtocol
 

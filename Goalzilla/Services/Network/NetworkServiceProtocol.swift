@@ -35,7 +35,6 @@ protocol EventsNetworkingProtocol {
 }
 
 extension NetworkServiceProtocol {
-    
     func getLeagues(sport: String, completion: @escaping (Result<LeaguesResponse?, Error>) -> Void) {
         let parameters: [String: Any] = [
             "met": "Leagues",

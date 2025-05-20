@@ -6,7 +6,6 @@
 //
 
 @testable import Goalzilla
-import XCTest
 
 class MockOnBoardingView: OnBoardingViewDelegete{
     

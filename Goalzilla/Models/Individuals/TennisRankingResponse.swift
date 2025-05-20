@@ -5,12 +5,12 @@
 //  Created by Abdelrahman Elshreif on 12/5/25.
 //
 
-struct TennisRankingResponse: Codable {
+struct TennisRankingResponse: Codable, Equatable {
     let success: Int?
     let result: [TennisRanking]?
 }
 
-struct TennisRanking: Codable {
+struct TennisRanking: Codable, Equatable {
     let place: String?
     let player: String?
     let playerKey: Int?

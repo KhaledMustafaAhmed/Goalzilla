@@ -8,7 +8,7 @@
 @testable import Goalzilla
 import XCTest
 
-final class OnBoardingPresenterTests: XCTest{
+final class OnBoardingPresenterTests: XCTestCase{
     // MARK: - Properties:
     var onBoardingPresenter:OnBoardingPresenterProtocol!
     
@@ -34,7 +34,12 @@ final class OnBoardingPresenterTests: XCTest{
         onBoardingPresenter.getSlidesData()
         // Then
         XCTAssertTrue(mockOnBoardingView.didCallRenderOnBoardingSlidesData == true)
-        
+    }
+    
+    func testGetSlidesData_WhenViewIsAttached_ShouldPassAndDataNotNil(){
+        // When
+        onBoardingPresenter.getSlidesData()
+        // Then
         XCTAssertTrue(mockOnBoardingView.renderOnBoardingSlidesDataCalledWithData != nil)
     }
 }
