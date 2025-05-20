@@ -35,5 +35,7 @@ protocol Provider{
 
     func removeLeagueFromFavourites(_ league: FavouritesModel) -> Bool
     
+    func checkifLeagueAtFavourite(leagueId:Int)-> Bool
+    
 }
 

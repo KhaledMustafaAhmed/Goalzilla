@@ -27,4 +27,6 @@ protocol LocalDataSourceProtocol{
     /// - Parameter league: A `FavouritesModel` instance matching the league to be removed,
     ///   typically identified by its `leagueId`.
     func removeLeagueFromFavourites(_ league: FavouritesModel) -> Bool
+    
+    func checkifLeagueAtFavourite(leagueId:Int)->Bool
 }

@@ -15,6 +15,14 @@ protocol EventScreenPresenterProtocol{
     func fetchEvent(with type: EventSectionType, sport: String ,leagueId: Int)
     
     func fetchTeamData(for sport: String, leagueId: Int)
+    
+    func leagueToFavouriteAction(leagueId: Int , leagueLogo:String,leagueTitle:String)
+    
+    func addToFavourite(leagueId: Int , leagueLogo:String,leagueTitle:String)
+    
+    func removeFromFavourite(leagueId: Int , leagueName:String , leagueLogo:String)
+    
+    func checkifLeagueAtFavourite(leagueId:Int)->Bool
 }
 
 class EventScreenPresenter{
@@ -30,6 +38,8 @@ class EventScreenPresenter{
 
 // MARK: Fetching data functions logic
 extension EventScreenPresenter: EventScreenPresenterProtocol{
+    
+
     
     func fetchEvent(with type: EventSectionType, sport: String ,leagueId: Int) {
         switch sport{
@@ -267,6 +277,30 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
         default:
             break
         }
+    }
+    
+    
+    
+    func leagueToFavouriteAction(leagueId: Int, leagueLogo: String, leagueTitle: String) {
+        if checkifLeagueAtFavourite(leagueId: leagueId){
+            removeFromFavourite(leagueId: leagueId, leagueName: leagueTitle, leagueLogo: leagueLogo)
+        }else{
+            addToFavourite(leagueId: leagueId, leagueLogo: leagueLogo, leagueTitle: leagueTitle)
+        }
+       
+    }
+
+    func addToFavourite(leagueId:Int,leagueLogo:String, leagueTitle:String){
+        providerService.addLeagueToFavourites(FavouritesModel(leagueId: leagueId, leagueName: leagueTitle, leagueLogo: leagueLogo))
+        self.view.renderAddingToFavouriteAction()
+    }
+    func removeFromFavourite(leagueId: Int , leagueName:String , leagueLogo:String) {
+        let _ = providerService.removeLeagueFromFavourites(FavouritesModel(leagueId: leagueId, leagueName: leagueName, leagueLogo: leagueLogo))
+        self.view.renderRemoveFromFavouriteAction()
+    }
+    
+    func checkifLeagueAtFavourite(leagueId:Int)->Bool{
+        return self.providerService.checkifLeagueAtFavourite(leagueId: leagueId)
     }
     
 }

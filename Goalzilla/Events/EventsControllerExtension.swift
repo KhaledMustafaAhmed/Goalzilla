@@ -9,18 +9,32 @@ import UIKit
 
 // MARK: Configure Navigation Bar Data
 extension EventsCollectionViewController{
+    
     func configureNAvigationBar(){
         self.navigationItem.title = "Events"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(addEventToFavourite))
+        let isAtFavourite = self.presenter.checkifLeagueAtFavourite(leagueId: self.leagueId)
+        
+        if isAtFavourite{
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(leagueToFavouriteAction))
+        }else{
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(leagueToFavouriteAction))
+        }
+
     }
     
-    @objc func addEventToFavourite(){
-        // write add to CoreData Logic
+    @objc func leagueToFavouriteAction(){
+        if let _ = self.leagueLogo{
+            presenter.leagueToFavouriteAction(leagueId: self.leagueId, leagueLogo: self.leagueLogo , leagueTitle: self.leagueName)
+        }else{
+            presenter.leagueToFavouriteAction(leagueId: self.leagueId, leagueLogo: "\(self.sport ?? "")" , leagueTitle: self.leagueName)
+        }
+       
+        
     }
 }
 
 // MARK: custom cells registeration
-extension EventsCollectionViewController{
+extension EventsCollectionViewController{	
     func registerCells(){
         registerSectionHeader()
         eventCellRegister()

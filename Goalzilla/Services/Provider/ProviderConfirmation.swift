@@ -62,4 +62,8 @@ class ProviderConfirmation : Provider{
     func removeLeagueFromFavourites(_ league: FavouritesModel) -> Bool {
         localDataSource.removeLeagueFromFavourites(league)
     }
+    
+    func checkifLeagueAtFavourite(leagueId:Int) ->Bool{
+        return localDataSource.checkifLeagueAtFavourite(leagueId: leagueId)
+    }
 }

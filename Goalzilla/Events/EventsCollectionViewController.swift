@@ -11,6 +11,9 @@ protocol EventsCollectionViewControllerProtocol{
     func upcomingDataLoaded(with data: [EventDataMapper])
     func latestDataLoaded(with data: [EventDataMapper])
     func teamDataLoaded(with data: [TeamDataMapper])
+    func renderAddingToFavouriteAction()
+    func renderRemoveFromFavouriteAction()
+    
 }
     
 class EventsCollectionViewController: UICollectionViewController {
@@ -113,6 +116,7 @@ extension EventsCollectionViewController{
 
 // MARK: Event View States:
 extension EventsCollectionViewController: EventsCollectionViewControllerProtocol{
+    
     func latestDataLoaded(with data: [EventDataMapper]) {
         self.latestEventsData = data
         collectionView.reloadData()
@@ -131,6 +135,14 @@ extension EventsCollectionViewController: EventsCollectionViewControllerProtocol
         collectionView.reloadData()
         collectionView.collectionViewLayout = createLayout()
 
+    }
+    
+    func renderAddingToFavouriteAction() {
+        self.configureNAvigationBar()
+    }
+    
+    func renderRemoveFromFavouriteAction() {
+        self.configureNAvigationBar()
     }
 }
 
