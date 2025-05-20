@@ -26,6 +26,7 @@ protocol FavouritesModelManagerProtocol {
     /// - Parameter favourite: The `FavouritesModel` instance to be removed from the favourites list.
     /// - Returns: A Boolean indicating whether the deletion was successful (`true`) or not (`false`).
     func delete(_ favourite: FavouritesModel) -> Bool
+        
 }
 
 /// Concrete implementation of `FavouritesModelManagerProtocol` responsible for
@@ -92,7 +93,6 @@ final class FavouritesModelManager: FavouritesModelManagerProtocol {
     private func getObjById(with id: Int64) -> NSManagedObject? {
         let fetchRequest = NSFetchRequest<CDFavLeague>(entityName: "CDFavLeague")
         fetchRequest.predicate = NSPredicate(format: "leagueID == %ld", id)
-        
         do {
             return try CoreDataService.shared.context.fetch(fetchRequest).first
         } catch {
