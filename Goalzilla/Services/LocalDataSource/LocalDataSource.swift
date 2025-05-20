@@ -14,6 +14,8 @@
 /// The main responsibilities include fetching all favourites, adding a league to favourites,
 /// and removing a league from favourites.
 class LocalDataSource: LocalDataSourceProtocol {
+ 
+    
     
     /// The favourite leagues manager that handles the Core Data operations.
     private let favouriteModelManager: FavouritesModelManagerProtocol
@@ -46,5 +48,9 @@ class LocalDataSource: LocalDataSourceProtocol {
     /// - Returns: A Boolean indicating whether the deletion was successful (`true`) or not (`false`).
     func removeLeagueFromFavourites(_ league: FavouritesModel) -> Bool {
         favouriteModelManager.delete(league)
+    }
+    
+    func checkifLeagueAtFavourite(leagueId: Int) -> Bool {
+        favouriteModelManager.search(leagueId: leagueId)
     }
 }

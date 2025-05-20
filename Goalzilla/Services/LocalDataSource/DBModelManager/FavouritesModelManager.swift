@@ -26,7 +26,8 @@ protocol FavouritesModelManagerProtocol {
     /// - Parameter favourite: The `FavouritesModel` instance to be removed from the favourites list.
     /// - Returns: A Boolean indicating whether the deletion was successful (`true`) or not (`false`).
     func delete(_ favourite: FavouritesModel) -> Bool
-        
+    
+    func search(leagueId:Int)->Bool
 }
 
 /// Concrete implementation of `FavouritesModelManagerProtocol` responsible for
@@ -36,6 +37,8 @@ protocol FavouritesModelManagerProtocol {
 /// converting `FavouritesModel` instances to Core Data entities and vice versa,
 /// and performing create, read, and delete operations.
 final class FavouritesModelManager: FavouritesModelManagerProtocol {
+   
+    
     
     /// Adds a new league to the favourites by creating a corresponding Core Data entity
     /// and saving the context.
@@ -99,6 +102,15 @@ final class FavouritesModelManager: FavouritesModelManagerProtocol {
             print("Error fetching object by ID \(id): \(error.localizedDescription)")
             return nil
         }
+    }
+    
+    func search(leagueId: Int) -> Bool {
+        if let _ = getObjById(with: Int64(leagueId)) {
+            return true
+        }else{
+            return false
+        }
+        
     }
 }
 

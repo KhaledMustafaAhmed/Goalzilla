@@ -28,5 +28,13 @@ enum Utils {
     }
     
     static var placeHolder = UIImage(named: "dummy")
+    static func emptyEventsPlaceHolder(for evetnType: String) -> UIImage? {
+        switch evetnType {
+        case "upcoming":
+            return UIImage(named: "noUpcomingEvents")
+        default:
+            return UIImage(named: "noLatestEvents")
+        }
+    }
 }
 		

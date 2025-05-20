@@ -177,24 +177,44 @@
         <!--Favourite-->
         <scene sceneID="Wgh-rD-9TU">
             <objects>
-                <viewController storyboardIdentifier="FavouriteScreen" id="k02-UT-W6j" customClass="FavouriteViewController" customModule="Goalzilla" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavouriteScreen" id="k02-UT-W6j" customClass="FavouriteScreenViewController" customModule="Goalzilla" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xg8-CL-Vjg">
                         <rect key="frame" x="0.0" y="0.0" width="402" height="874"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Favourite" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dl-yn-wGe">
-                                <rect key="frame" x="99" y="440" width="195" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WcE-e3-ChX">
+                                <rect key="frame" x="0.0" y="106" width="402" height="685"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="exz-Iu-iO4">
+                                        <rect key="frame" x="0.0" y="50" width="402" height="47.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="exz-Iu-iO4" id="rl7-hF-PGs">
+                                            <rect key="frame" x="0.0" y="0.0" width="402" height="47.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="skeletonCornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HA7-EU-iwk"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <constraints>
+                            <constraint firstItem="WcE-e3-ChX" firstAttribute="top" secondItem="HA7-EU-iwk" secondAttribute="top" id="Kd4-zn-QUw"/>
+                            <constraint firstItem="WcE-e3-ChX" firstAttribute="leading" secondItem="HA7-EU-iwk" secondAttribute="leading" id="RyZ-uT-hZf"/>
+                            <constraint firstItem="HA7-EU-iwk" firstAttribute="bottom" secondItem="WcE-e3-ChX" secondAttribute="bottom" id="bdF-Ha-QhL"/>
+                            <constraint firstItem="HA7-EU-iwk" firstAttribute="trailing" secondItem="WcE-e3-ChX" secondAttribute="trailing" id="uGF-Th-Adv"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favourite" image="heart.fill" catalog="system" id="K34-Ak-gGW"/>
                     <navigationItem key="navigationItem" id="q0T-a7-ZvR"/>
+                    <connections>
+                        <outlet property="tableView" destination="WcE-e3-ChX" id="ZxD-5C-l0W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ygr-rL-EJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -353,18 +373,18 @@
                                 <size key="customSize" width="395" height="250"/>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9CF-ZY-YCU">
-                                <rect key="frame" x="133.66666666666666" y="260" width="127.99999999999997" height="128"/>
+                                <rect key="frame" x="133.66666666666666" y="260" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="P3I-iD-Ifa">
-                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionViewCellContentView>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="vnw-8D-Z9g">
-                                <rect key="frame" x="133.66666666666666" y="398" width="127.99999999999997" height="128"/>
+                                <rect key="frame" x="133.66666666666666" y="398" width="128" height="128"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fc5-em-PUe">
-                                    <rect key="frame" x="0.0" y="0.0" width="127.99999999999997" height="128"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionViewCellContentView>
                             </collectionViewCell>
@@ -410,9 +430,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
