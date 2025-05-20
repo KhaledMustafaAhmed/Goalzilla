@@ -8,6 +8,9 @@ import UIKit
 import Foundation
 
 enum Utils {
+    static func getDate() -> String{
+        "dwdm"
+    }
     static func isConnectedToNetwork() -> Bool{
         return true
     }
@@ -21,6 +24,16 @@ enum Utils {
             return UIImage(named: "basketballLeague")
         default:
             return UIImage(named: "cricketLeague")
+        }
+    }
+    
+    static var placeHolder = UIImage(named: "dummy")
+    static func emptyEventsPlaceHolder(for evetnType: String) -> UIImage? {
+        switch evetnType {
+        case "upcoming":
+            return UIImage(named: "noUpcomingEvents")
+        default:
+            return UIImage(named: "noLatestEvents")
         }
     }
 }

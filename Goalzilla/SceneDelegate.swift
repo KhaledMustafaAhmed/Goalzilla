@@ -34,10 +34,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
     }
 
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+    func sceneDidEnterBackground(_ scene: UIScene) {        
+        CoreDataService.shared.saveContext()
     }
-
-
 }
 
+/*
+ func convertCDFavLeagueToFavLeague() -> FavouritesModel {
+     return FavouritesModel(leagueId: Int(self.leagueID), leagueName: self.leagueName ?? "no-data-returned", leagueLogo: self.leagueLogo ?? "no-data-returned")
+ }
+ */
