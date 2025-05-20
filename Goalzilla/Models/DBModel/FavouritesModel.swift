@@ -9,4 +9,5 @@ struct FavouritesModel {
     var leagueId: Int
     var leagueName: String
     var leagueLogo: String
+    var sportName: String
 }

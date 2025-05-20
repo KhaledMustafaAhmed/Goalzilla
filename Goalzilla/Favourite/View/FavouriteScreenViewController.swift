@@ -18,20 +18,25 @@ class FavouriteScreenViewController: UIViewController, FavouriteScreenProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
         self.presenter = FavouritePresenter(favouriteScreenView: self, provider: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource(favouriteModelManager: FavouritesModelManager())))
         presenter?.getFavouriteLeagues()
         self.view.isSkeletonable = true
+        
+        print("in view did load fav")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.getFavouriteLeagues()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        presenter?.getFavouriteLeagues()
         self.view.isSkeletonable = true
     }
 
     func renderFavouriteData(leagueList:[FavouritesModel]) {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-
         self.leagues = leagueList
         self.tableView.stopSkeletonAnimation()
         self.view.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.25))
@@ -47,8 +52,6 @@ class FavouriteScreenViewController: UIViewController, FavouriteScreenProtocol {
         print("Fialed to Get Data")
         tableView.hideSkeleton()
     }
-    
-    
 
 }
 
@@ -105,11 +108,10 @@ extension FavouriteScreenViewController : UITableViewDataSource , UITableViewDel
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
 
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
-
-            self.presenter?.removeLeagueFromFavourite(league: leagueToRemove)
+            
             self.leagues.remove(at: indexPath.row)
-    
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.presenter?.removeLeagueFromFavourite(league: leagueToRemove)
             
             if self.leagues.isEmpty {
                 self.renderEmptyDataView()
@@ -124,7 +126,8 @@ extension FavouriteScreenViewController : UITableViewDataSource , UITableViewDel
         eventsVC.leagueId = self.leagues[indexPath.row].leagueId
         eventsVC.leagueLogo = self.leagues[indexPath.row].leagueLogo
         eventsVC.leagueName = self.leagues[indexPath.row].leagueName
-        
+        eventsVC.sport = self.leagues[indexPath.row].sportName
+
         self.navigationController?.pushViewController(eventsVC, animated: true)
     }
 

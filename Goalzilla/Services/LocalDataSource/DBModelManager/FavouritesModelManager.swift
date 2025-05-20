@@ -50,6 +50,7 @@ final class FavouritesModelManager: FavouritesModelManagerProtocol {
         cdFavLeague.leagueID = Int64(favourite.leagueId)
         cdFavLeague.leagueName = favourite.leagueName
         cdFavLeague.leagueLogo = favourite.leagueLogo
+        cdFavLeague.sportName = favourite.sportName
         CoreDataService.shared.saveContext()
     }
     

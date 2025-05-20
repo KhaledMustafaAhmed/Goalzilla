@@ -38,9 +38,7 @@ class EventScreenPresenter{
 
 // MARK: Fetching data functions logic
 extension EventScreenPresenter: EventScreenPresenterProtocol{
-    
 
-    
     func fetchEvent(with type: EventSectionType, sport: String ,leagueId: Int) {
         switch sport{
         case "football":
@@ -61,7 +59,6 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                     footballEvents.forEach {(event) in
                         eventArr.append(EventDataMapper.createEvent(from: event))
                     }
-                    
                     
                     switch type {
                     case .upcoming:
@@ -187,15 +184,13 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
                         print("football team data success but return with nil no data")
                         return
                     }
-                 //   print("Football team data: \(footballTeamData)")
+                    
                     var teamArr: [TeamDataMapper] = []
                     
                     footballTeamData.forEach { FootballTeam in
                         teamArr.append(TeamDataMapper.creatTeamMapper(with: FootballTeam))
                     }
-                    
-                  //  print("football team mappper array: \(teamArr)")
-                    
+                                        
                     self?.view.teamDataLoaded(with: teamArr)
                     
                 case .failure(let error):
@@ -279,28 +274,25 @@ extension EventScreenPresenter: EventScreenPresenterProtocol{
         }
     }
     
-    
-    
     func leagueToFavouriteAction(leagueId: Int, leagueLogo: String, leagueTitle: String) {
         if checkifLeagueAtFavourite(leagueId: leagueId){
             removeFromFavourite(leagueId: leagueId, leagueName: leagueTitle, leagueLogo: leagueLogo)
         }else{
             addToFavourite(leagueId: leagueId, leagueLogo: leagueLogo, leagueTitle: leagueTitle)
         }
-       
     }
 
     func addToFavourite(leagueId:Int,leagueLogo:String, leagueTitle:String){
-        providerService.addLeagueToFavourites(FavouritesModel(leagueId: leagueId, leagueName: leagueTitle, leagueLogo: leagueLogo))
+        providerService.addLeagueToFavourites(FavouritesModel(leagueId: leagueId, leagueName: leagueTitle, leagueLogo: leagueLogo, sportName: self.view.sport))
         self.view.renderAddingToFavouriteAction()
     }
+    
     func removeFromFavourite(leagueId: Int , leagueName:String , leagueLogo:String) {
-        let _ = providerService.removeLeagueFromFavourites(FavouritesModel(leagueId: leagueId, leagueName: leagueName, leagueLogo: leagueLogo))
+        let _ = providerService.removeLeagueFromFavourites(FavouritesModel(leagueId: leagueId, leagueName: leagueName, leagueLogo: leagueLogo,sportName: self.view.sport))
         self.view.renderRemoveFromFavouriteAction()
     }
     
     func checkifLeagueAtFavourite(leagueId:Int)->Bool{
         return self.providerService.checkifLeagueAtFavourite(leagueId: leagueId)
     }
-    
 }

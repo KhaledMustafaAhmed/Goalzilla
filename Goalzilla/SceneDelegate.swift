@@ -39,3 +39,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+/*
+ func convertCDFavLeagueToFavLeague() -> FavouritesModel {
+     return FavouritesModel(leagueId: Int(self.leagueID), leagueName: self.leagueName ?? "no-data-returned", leagueLogo: self.leagueLogo ?? "no-data-returned")
+ }
+ */
