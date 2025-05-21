@@ -10,16 +10,32 @@ import UIKit
 // MARK: Configure Navigation Bar Data
 extension EventsCollectionViewController{
     
-    func configureNAvigationBar(){
+    func configureNavigationBar() {
         self.navigationItem.title = "Events"
         let isAtFavourite = self.presenter.checkifLeagueAtFavourite(leagueId: self.leagueId)
         
-        if isAtFavourite{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .rewind, target: self, action: #selector(leagueToFavouriteAction))
-        }else{
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .reply, target: self, action: #selector(leagueToFavouriteAction))
+        if isAtFavourite {
+            let heartButton = UIBarButtonItem(
+                image: UIImage(systemName: "heart.fill"),
+                primaryAction: UIAction(handler: { [weak self] _ in
+                    self?.leagueToFavouriteAction()
+                })
+            )
+            
+            heartButton.changesSelectionAsPrimaryAction = false
+            heartButton.tintColor = .systemBlue
+        
+            self.navigationItem.rightBarButtonItem = heartButton
+        } else {
+            let heartButton = UIBarButtonItem(
+                image: UIImage(systemName: "heart"),
+                primaryAction: UIAction(handler: { [weak self] _ in
+                    self?.leagueToFavouriteAction()
+                })
+            )
+            heartButton.changesSelectionAsPrimaryAction = false
+            self.navigationItem.rightBarButtonItem = heartButton
         }
-
     }
     
     @objc func leagueToFavouriteAction(){
@@ -50,7 +66,8 @@ extension EventsCollectionViewController{
 
     }
     func eventCellRegister(){
-        self.collectionView.register(EventCell.nib, forCellWithReuseIdentifier: EventCell.resuseIdentifier)
+//        self.collectionView.register(EventCell.nib, forCellWithReuseIdentifier: EventCell.resuseIdentifier)
+        self.collectionView.register(EventCellVersionII.nib, forCellWithReuseIdentifier: EventCellVersionII.resuseIdentifier)
     }
     
     func teamCellRegister(){
@@ -83,8 +100,8 @@ extension EventsCollectionViewController {
             if upcomingEventsData.count >= 1 {
                 let match = upcomingEventsData[indexPath.row]
                 guard let cell = collectionView
-                                   .dequeueReusableCell(withReuseIdentifier: EventCell.resuseIdentifier,
-                                                        for: indexPath) as? EventCell else { fatalError() }
+                    .dequeueReusableCell(withReuseIdentifier: EventCellVersionII.resuseIdentifier,
+                                         for: indexPath) as? EventCellVersionII else { fatalError() }
                 cell.setData(event: match)
                 return cell
             }else{
@@ -98,8 +115,8 @@ extension EventsCollectionViewController {
             if latestEventsData.count >= 1 {
                 let match = upcomingEventsData[indexPath.row]
                 guard let cell = collectionView
-                                   .dequeueReusableCell(withReuseIdentifier: EventCell.resuseIdentifier,
-                                                        for: indexPath) as? EventCell else { fatalError() }
+                    .dequeueReusableCell(withReuseIdentifier: EventCellVersionII.resuseIdentifier,
+                                         for: indexPath) as? EventCellVersionII else { fatalError() }
                 cell.setData(event: match)
                 return cell
             }else{
@@ -110,18 +127,6 @@ extension EventsCollectionViewController {
 
                 return cell
             }
-         
-//           case 0, 1:
-//               guard let cell = collectionView
-//                   .dequeueReusableCell(withReuseIdentifier: EventCell.resuseIdentifier,
-//                                        for: indexPath) as? EventCell else { fatalError() }
-//            
-//               let match = (indexPath.section == 0)
-//                          ? upcomingEventsData[indexPath.row]
-//                          : latestEventsData[indexPath.row]
-//            cell.setData(event: match)
-//               return cell
-
            default:
                guard let cell = collectionView
                    .dequeueReusableCell(withReuseIdentifier: TeamCollectionViewCell.resuseIdentifier,
@@ -129,45 +134,9 @@ extension EventsCollectionViewController {
 
 
             cell.setData(team: teamData[indexPath.row])
-            cell.layer.borderWidth = 5
-            cell.layer.borderColor = UIColor.red.cgColor
-            cell.layer.cornerRadius = 50
+            cell.layer.cornerRadius = 40
                return cell
            }
     }
     
-    
-}
-
-
-// MARK: UICollectionViewDelegate
-extension EventsCollectionViewController{
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 }

@@ -42,15 +42,18 @@ class OnBoardingViewController: UIViewController  , OnBoardingViewDelegete{
     
   
     @IBAction func nextOnBoardingPageClicked(_ sender: Any) {
-        if currentPage == slides.count-1 {
-            presenter.userHasOnBoarded()
-            navigateToMainScreen()
-            return
-        }else{
-            currentPage += 1
-            let indexPath = IndexPath(item: currentPage, section: 0)
-            onBoardingCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        }
+        (sender as! UIButton).ForBtnBig(DoThis: {
+            if self.currentPage == self.slides.count-1 {
+                self.presenter.userHasOnBoarded()
+                self.navigateToMainScreen()
+                return
+            }else{
+                self.currentPage += 1
+                let indexPath = IndexPath(item: self.currentPage, section: 0)
+                self.onBoardingCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+            }
+        })
+        
     }
     
 }
