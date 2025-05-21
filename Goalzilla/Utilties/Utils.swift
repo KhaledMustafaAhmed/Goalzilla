@@ -27,6 +27,24 @@ enum Utils {
         }
     }
     
+    static func getImmediateDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: Date.now)
+    }
+    
+    static func calcSevenDaysComming() -> String {
+            let currentDate = Date.now
+            let calendar = Calendar.current
+            if let futureDate = calendar.date(byAdding: .day, value: 7, to: currentDate) {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                return formatter.string(from: futureDate)
+            } else {
+                return getImmediateDate()
+            }
+        }
+    
     static var placeHolder = UIImage(named: "dummy")
     static func emptyEventsPlaceHolder(for evetnType: String) -> UIImage? {
         switch evetnType {

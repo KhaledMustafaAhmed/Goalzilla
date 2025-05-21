@@ -63,13 +63,15 @@ extension EventsCollectionViewController{
         
         var group:NSCollectionLayoutGroup!
         
+        // horizontal
         let upComingEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.99), height: .fractionalHeight(1.0), spacing: 10)
-        
+        //vertical
         let latestEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.99), height: .fractionalHeight(1.0), spacing: 10)
-        
+        // horizontal
         let teamItem = CompostionalLayout.createItem(width: .fractionalWidth(0.9), height: .fractionalHeight(1.0), spacing: 10)
-        
+        // header
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
+        //
         
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
                  layoutSize: headerSize,
@@ -89,7 +91,7 @@ extension EventsCollectionViewController{
                 
                 section.orthogonalScrollingBehavior = .groupPagingCentered
                 
-                
+            
             case 1:
                 group = CompostionalLayout.creatGroup(alignment: .vertical, width: .fractionalWidth(1.0), height: .fractionalHeight(0.3), item:latestEventItem, count: 1 )
                 
