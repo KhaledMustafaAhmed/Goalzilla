@@ -156,8 +156,6 @@
 				786229462DDBD8230076173D /* GoalzillaTests */,
 			);
 			name = GoalzillaTests;
-			packageProductDependencies = (
-			);
 			productName = GoalzillaTests;
 			productReference = 786229452DDBD8230076173D /* GoalzillaTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";

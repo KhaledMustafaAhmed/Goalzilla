@@ -12,4 +12,6 @@ target 'Goalzilla' do
   pod 'Alamofire'
   pod 'lottie-ios'
   pod 'SkeletonView'
+  pod 'IBAnimatable'
+  pod "Pastel"
 end
