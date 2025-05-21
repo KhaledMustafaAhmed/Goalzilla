@@ -43,7 +43,7 @@ class EventsCollectionViewController: UICollectionViewController {
         self.collectionView.isScrollEnabled = true
         presenter = EventScreenPresenter(eventView: self, providerService: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource(favouriteModelManager:  FavouritesModelManager())))
         registerCells()
-        configureNAvigationBar()
+        configureNavigationBar()
         presenterConfigration()
         
     }
@@ -126,6 +126,18 @@ extension EventsCollectionViewController{
             
             return headerView
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            let teamScreenVC = self.storyboard?.instantiateViewController(withIdentifier: "teamInfo") as? TeamInformationView
+    
+            teamScreenVC?.leagueId = self.leagueId
+            teamScreenVC?.sport = self.sport
+            let team = teamData[indexPath.item]
+            teamScreenVC?.teamId = team.id
+            self.navigationController?.pushViewController(teamScreenVC!, animated: true)
+        }
+    }
 }
 
 // MARK: Event View States:
@@ -151,11 +163,11 @@ extension EventsCollectionViewController: EventsCollectionViewControllerProtocol
     }
     
     func renderAddingToFavouriteAction() {
-        self.configureNAvigationBar()
+        self.configureNavigationBar()
     }
     
     func renderRemoveFromFavouriteAction() {
-        self.configureNAvigationBar()
+        self.configureNavigationBar()
     }
 }
 

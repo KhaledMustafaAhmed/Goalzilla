@@ -22,9 +22,6 @@ class TeamCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("teamImage = \(teamImage)") // should not be nil
-            print("teamName = \(teamName)")
-
         isSkeletonable = true
         contentView.isSkeletonable = true
         teamImage.isSkeletonable = true
@@ -42,7 +39,7 @@ class TeamCollectionViewCell: UICollectionViewCell {
         if let stringURL = team.logo {
             teamImage.kf.setImage(with: URL(string: stringURL) , placeholder: Utils.placeHolder)
         }else{
-            teamImage.image = UIImage(named: "pic-1")
+            teamImage.image = Utils.placeHolder
         }
     }
 }
