@@ -43,7 +43,7 @@ class EventsCollectionViewController: UICollectionViewController {
         self.collectionView.isScrollEnabled = true
         presenter = EventScreenPresenter(eventView: self, providerService: ProviderConfirmation(remoteDataSource: RemoteDataSource(networkService: AlamofireService()), localDataSource: LocalDataSource(favouriteModelManager:  FavouritesModelManager())))
         registerCells()
-        configureNAvigationBar()
+        configureNavigationBar()
         presenterConfigration()
         
     }
@@ -67,9 +67,9 @@ extension EventsCollectionViewController{
         let upComingEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.99), height: .fractionalHeight(1.0), spacing: 10)
         //vertical
         let latestEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.99), height: .fractionalHeight(1.0), spacing: 10)
-        // horizontal
-        let teamItem = CompostionalLayout.createItem(width: .fractionalWidth(0.9), height: .fractionalHeight(1.0), spacing: 10)
-        // header
+        
+        let teamItem = CompostionalLayout.createItem(width: .fractionalWidth(0.99), height: .fractionalHeight(1.0), spacing: 10)
+        
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
         //
         
@@ -85,7 +85,7 @@ extension EventsCollectionViewController{
             switch(sectionIndex){
                 
             case 0:
-                group = CompostionalLayout.creatGroup(alignment: .horizontal, width: .fractionalWidth(0.9), height: .fractionalHeight(0.3), item:upComingEventItem, count: 1)
+                group = CompostionalLayout.creatGroup(alignment: .horizontal, width: .fractionalWidth(1.0), height: .fractionalHeight(0.3), item:upComingEventItem, count: 1)
                 
                 section = NSCollectionLayoutSection(group: group)
                 
@@ -128,6 +128,18 @@ extension EventsCollectionViewController{
             
             return headerView
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            let teamScreenVC = self.storyboard?.instantiateViewController(withIdentifier: "teamInfo") as? TeamInformationView
+    
+            teamScreenVC?.leagueId = self.leagueId
+            teamScreenVC?.sport = self.sport
+            let team = teamData[indexPath.item]
+            teamScreenVC?.teamId = team.id
+            self.navigationController?.pushViewController(teamScreenVC!, animated: true)
+        }
+    }
 }
 
 // MARK: Event View States:
@@ -153,11 +165,11 @@ extension EventsCollectionViewController: EventsCollectionViewControllerProtocol
     }
     
     func renderAddingToFavouriteAction() {
-        self.configureNAvigationBar()
+        self.configureNavigationBar()
     }
     
     func renderRemoveFromFavouriteAction() {
-        self.configureNAvigationBar()
+        self.configureNavigationBar()
     }
 }
 
