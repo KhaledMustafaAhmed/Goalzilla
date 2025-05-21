@@ -50,7 +50,8 @@ extension EventsCollectionViewController{
 
     }
     func eventCellRegister(){
-        self.collectionView.register(EventCell.nib, forCellWithReuseIdentifier: EventCell.resuseIdentifier)
+//        self.collectionView.register(EventCell.nib, forCellWithReuseIdentifier: EventCell.resuseIdentifier)
+        self.collectionView.register(EventCellVersionII.nib, forCellWithReuseIdentifier: EventCellVersionII.resuseIdentifier)
     }
     
     func teamCellRegister(){
@@ -82,9 +83,12 @@ extension EventsCollectionViewController {
         case 0:
             if upcomingEventsData.count >= 1 {
                 let match = upcomingEventsData[indexPath.row]
+//                guard let cell = collectionView
+//                                   .dequeueReusableCell(withReuseIdentifier: EventCell.resuseIdentifier,
+//                                                        for: indexPath) as? EventCell else { fatalError() }
                 guard let cell = collectionView
-                                   .dequeueReusableCell(withReuseIdentifier: EventCell.resuseIdentifier,
-                                                        for: indexPath) as? EventCell else { fatalError() }
+                    .dequeueReusableCell(withReuseIdentifier: EventCellVersionII.resuseIdentifier,
+                                         for: indexPath) as? EventCellVersionII else { fatalError() }
                 cell.setData(event: match)
                 return cell
             }else{
@@ -97,9 +101,12 @@ extension EventsCollectionViewController {
         case 1:
             if latestEventsData.count >= 1 {
                 let match = upcomingEventsData[indexPath.row]
+//                guard let cell = collectionView
+//                                   .dequeueReusableCell(withReuseIdentifier: EventCell.resuseIdentifier,
+//                                                        for: indexPath) as? EventCell else { fatalError() }
                 guard let cell = collectionView
-                                   .dequeueReusableCell(withReuseIdentifier: EventCell.resuseIdentifier,
-                                                        for: indexPath) as? EventCell else { fatalError() }
+                    .dequeueReusableCell(withReuseIdentifier: EventCellVersionII.resuseIdentifier,
+                                         for: indexPath) as? EventCellVersionII else { fatalError() }
                 cell.setData(event: match)
                 return cell
             }else{

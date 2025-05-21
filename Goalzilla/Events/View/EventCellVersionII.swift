@@ -1,15 +1,13 @@
 //
-//  EventCell.swift
+//  EventCellVersionII.swift
 //  Goalzilla
 //
-//  Created by Abdelrahman Elshreif on 17/5/25.
+//  Created by Abdelrahman Elshreif on 20/5/25.
 //
 
 import UIKit
-import SkeletonView
-import Kingfisher
 
-class EventCell: UICollectionViewCell {
+class EventCellVersionII: UICollectionViewCell {
 
     @IBOutlet weak var awayTeamTitle: UILabel!
     @IBOutlet weak var awayTeamImage: UIImageView!
@@ -20,11 +18,11 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var homeTeamTitle: UILabel!
     @IBOutlet weak var homeTeamImage: UIImageView!
     
-    static var resuseIdentifier:String = "EventCell"
+    static var resuseIdentifier:String = "EventCell2"
 
     
     static var nib:UINib{
-        return UINib.init(nibName: "EventCell", bundle: Bundle.init(for: EventCell.self))
+        return UINib.init(nibName: "EventCellVersionII", bundle: Bundle.init(for: EventCellVersionII.self))
     }
     
     override func awakeFromNib() {

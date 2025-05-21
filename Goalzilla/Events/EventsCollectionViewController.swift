@@ -67,7 +67,7 @@ extension EventsCollectionViewController{
         
         let latestEventItem = CompostionalLayout.createItem(width: .fractionalWidth(0.99), height: .fractionalHeight(1.0), spacing: 10)
         
-        let teamItem = CompostionalLayout.createItem(width: .fractionalWidth(0.9), height: .fractionalHeight(1.0), spacing: 10)
+        let teamItem = CompostionalLayout.createItem(width: .fractionalWidth(0.99), height: .fractionalHeight(1.0), spacing: 10)
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
         
@@ -83,7 +83,7 @@ extension EventsCollectionViewController{
             switch(sectionIndex){
                 
             case 0:
-                group = CompostionalLayout.creatGroup(alignment: .horizontal, width: .fractionalWidth(0.9), height: .fractionalHeight(0.3), item:upComingEventItem, count: 1)
+                group = CompostionalLayout.creatGroup(alignment: .horizontal, width: .fractionalWidth(1.0), height: .fractionalHeight(0.3), item:upComingEventItem, count: 1)
                 
                 section = NSCollectionLayoutSection(group: group)
                 
