@@ -46,6 +46,7 @@ enum Utils {
         }
     
     static var placeHolder = UIImage(named: "dummy")
+    static var emptyFavourite = UIImage(named: "fav")
     static func emptyEventsPlaceHolder(for evetnType: String) -> UIImage? {
         switch evetnType {
         case "upcoming":
