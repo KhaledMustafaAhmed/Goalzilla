@@ -27,7 +27,7 @@ class TeamInformationPresenter: TeamInformation{
         provider.getFootballTeams(with: sport, leagueId: leagueId) { result in
             switch result{
             case .success(let teamResponse):
-                if let players = teamResponse?.result?.first?.players{
+                if let players = teamResponse?.result?.filter({ $0.teamKey == teamId}).first?.players{
                     self.view.renderPlayersDataOfTeam(teamPlayers: players)
                 }
             case .failure(_):
