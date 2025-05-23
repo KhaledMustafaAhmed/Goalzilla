@@ -14,4 +14,5 @@ target 'Goalzilla' do
   pod 'SkeletonView'
   pod 'IBAnimatable'
   pod "Pastel"
+  pod 'ReachabilitySwift'
 end

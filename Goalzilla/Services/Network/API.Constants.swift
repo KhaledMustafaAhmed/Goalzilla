@@ -19,8 +19,8 @@
 struct Constants {
     static let apiKey = "8423d660d1ff01d7e3352964ce26a41d821c1adc584df17efa5fd0587403b2de"
     static let baseURL = "https://apiv2.allsportsapi.com"
-    static let from = "2025-05-03"
-    static let to = "2025-05-09"
+    static let from = Utils.calcSevenDaysBefore()
+    static let to = Utils.getYesterDay()
     // write function to get dates
     static let upcomingFrom = Utils.getImmediateDate()
     static let upcomingTo = Utils.calcSevenDaysComming()

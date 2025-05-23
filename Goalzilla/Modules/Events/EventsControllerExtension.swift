@@ -87,7 +87,7 @@ extension EventsCollectionViewController {
             let count =  upcomingEventsData.count > 0 ? upcomingEventsData.count : 1
                 return count
             case 1:
-            let count =  latestEventsData.count > 0 ? upcomingEventsData.count : 1
+            let count =  latestEventsData.count > 0 ? latestEventsData.count : 1
                 return count
            default: return teamData.count
            }
@@ -113,7 +113,7 @@ extension EventsCollectionViewController {
             }
         case 1:
             if latestEventsData.count >= 1 {
-                let match = upcomingEventsData[indexPath.row]
+                let match = latestEventsData[indexPath.row]
                 guard let cell = collectionView
                     .dequeueReusableCell(withReuseIdentifier: EventCellVersionII.resuseIdentifier,
                                          for: indexPath) as? EventCellVersionII else { fatalError() }

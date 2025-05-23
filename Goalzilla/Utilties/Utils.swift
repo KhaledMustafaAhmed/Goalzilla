@@ -45,7 +45,32 @@ enum Utils {
             }
         }
     
+    static func calcSevenDaysBefore() -> String {
+            let currentDate = Date.now
+            let calendar = Calendar.current
+            if let pastDate = calendar.date(byAdding: .day, value: -7, to: currentDate) {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                return formatter.string(from: pastDate)
+            } else {
+                return getImmediateDate()
+            }
+        }
+    
+    static func getYesterDay() -> String {
+            let currentDate = Date.now
+            let calendar = Calendar.current
+            if let yesterday = calendar.date(byAdding: .day, value: -1, to: currentDate) {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                return formatter.string(from: yesterday)
+            } else {
+                return getImmediateDate()
+            }
+        }
+    
     static var placeHolder = UIImage(named: "dummy")
+    static var emptyFavourite = UIImage(named: "fav")
     static func emptyEventsPlaceHolder(for evetnType: String) -> UIImage? {
         switch evetnType {
         case "upcoming":

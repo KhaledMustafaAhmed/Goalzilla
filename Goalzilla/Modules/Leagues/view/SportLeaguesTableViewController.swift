@@ -20,12 +20,16 @@ class SportLeaguesTableViewController: UITableViewController , SportLeaguesDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(SportLeagueTableViewCell.nib, forCellReuseIdentifier: SportLeagueTableViewCell.resuseIdentifier)
+        self.configureNavigationBar()
         self.presenter.attachView(view: self)
         self.presenter.getLeaguesData(sport: sport)
         self.tableView.isSkeletonable = true
         self.tableView.showSkeleton(usingColor: .concrete, transition: .crossDissolve(0.25))
     }
     
+    func configureNavigationBar(){
+        self.navigationItem.title = "Leagues"
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }

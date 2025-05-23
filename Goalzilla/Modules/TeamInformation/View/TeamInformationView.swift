@@ -14,6 +14,7 @@ class TeamInformationView: UITableViewController , TeamInformationDelegate{
     var sport:String!
     var leagueId:Int!
     var teamId:Int!
+    var teamName:String!
     var team:[Player] = []
 
     var showNoPlayersHeader: Bool = false
@@ -25,6 +26,7 @@ class TeamInformationView: UITableViewController , TeamInformationDelegate{
         super.viewDidLoad()
         tableView.contentInset = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
         self.tableView.register(PlayerCustomCellTableViewCell.nib, forCellReuseIdentifier: PlayerCustomCellTableViewCell.resuseIdentifier)
+        self.navigationItem.title = teamName
         self.presenter.attachView(view: self)
         self.presenter.fetchData(sport: sport, leagueId: leagueId, teamId: teamId)
         self.tableView.isSkeletonable = true

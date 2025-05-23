@@ -26,7 +26,7 @@ class PlayerCustomCellTableViewCell: UITableViewCell {
         isSkeletonable = true
         playerPosition.isSkeletonable = true
         playerImg.isSkeletonable = true
-        playerImg.isSkeletonable = true
+        playerName.isSkeletonable = true
    
     }
 
