@@ -24,7 +24,7 @@ class SplashViewController: UIViewController {
         
         splashPresenter.whichScreenWillNavigateTo()
         
-        setupLottieAnimation(for: 1.0)
+        setupLottieAnimation(for: 2.0)
     }
 }
 
