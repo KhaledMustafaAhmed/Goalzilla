@@ -138,6 +138,7 @@ extension EventsCollectionViewController{
             teamScreenVC?.teamName = self.teamData[indexPath.row].name
             let team = teamData[indexPath.row]
             teamScreenVC?.teamId = team.id
+            teamScreenVC?.teamLogo = team.logo
             self.navigationController?.pushViewController(teamScreenVC!, animated: true)
         }
     }

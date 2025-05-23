@@ -55,6 +55,7 @@
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
+                <outlet property="containerView" destination="H2p-sc-9uM" id="0xt-1c-DiH"/>
                 <outlet property="playerImg" destination="R5g-rC-i1E" id="xyH-R0-E8h"/>
                 <outlet property="playerName" destination="Nku-8S-bst" id="eDu-L1-3bH"/>
                 <outlet property="playerPosition" destination="XgH-kc-IBl" id="7r3-F4-bcV"/>

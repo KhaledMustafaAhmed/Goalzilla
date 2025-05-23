@@ -6,13 +6,12 @@
 //
 import UIKit
 import Foundation
-
+import Reachability
 enum Utils {
-    static func getDate() -> String{
-        "dwdm"
-    }
+    static let reacability = try! Reachability()
+    
     static func isConnectedToNetwork() -> Bool{
-        return true
+        return reacability.isReachable
     }
     static func sportPlaceholderImage(for sport: String) -> UIImage? {
         switch sport {
@@ -71,6 +70,7 @@ enum Utils {
     
     static var placeHolder = UIImage(named: "dummy")
     static var emptyFavourite = UIImage(named: "fav")
+    static var playerPlaceHolder = UIImage(named: "player")
     static func emptyEventsPlaceHolder(for evetnType: String) -> UIImage? {
         switch evetnType {
         case "upcoming":
