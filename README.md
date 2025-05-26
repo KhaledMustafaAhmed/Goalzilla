@@ -74,10 +74,4 @@ The app also implements SOLID principles to ensure maintainable, scalable code.
 GoalZilla integrates with the SportsDB API to provide real-time sports data. The app efficiently caches this data using CoreData to enable offline access.
 
 ## 🤝 Contributing
-Contributions are welcome! If you'd like to contribute:
-
-Fork the repository
-Create your feature branch (git checkout -b feature/amazing-feature)
-Commit your changes (git commit -m 'Add some amazing feature')
-Push to the branch (git push origin feature/amazing-feature)
-Open a Pull Request
+Contributions are welcome! If you'd like to contribute.
