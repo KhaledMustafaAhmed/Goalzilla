@@ -15,12 +15,8 @@ GoalZilla is a comprehensive sports tracking application for iOS that provides e
 - **Real-Time Updates**: Powered by SportsDB API integration
   
 ## 📱 Demo
+![Goalzilla_part_1](https://github.com/user-attachments/assets/420333be-c440-48f7-a1dd-80ea0c327fa6)
 
-<p align="center">
-  <img src="https://drive.google.com/uc?export=view&id=1Zfsjg5scucGTM67A1LTEfyapA4H8_9LD" width="300" alt="GoalZilla App Demo"/>
-  <br>
-  <em>GoalZilla in action - Sports tracking with a beautiful interface</em>
-</p>
 
 ## 🛠️ Technologies Used
 
